@@ -1,293 +1,590 @@
-// out: ../css/tis2027.css
-// Custom TiS 2027 conference layer. Keep conference-specific overrides here;
-// the BootstrapMade template SCSS continues to compile to main.css.
+// =============================================================
+// TiS 2027 — Conference Website Styles
+// compile:  sass --no-source-map assets/scss/tis2027.scss assets/css/tis2027.css
+// watch:    sass --no-source-map --watch assets/scss/tis2027.scss assets/css/tis2027.css
+// =============================================================
 
-:root {
-  --background-color: #f4f8fb;
-  --default-color: #223041;
-  --heading-color: #07172f;
-  --accent-color: #12bfd8;
-  --surface-color: #ffffff;
-  --contrast-color: #ffffff;
-  --nav-color: #e8fbff;
-  --nav-hover-color: #12bfd8;
-  --nav-dropdown-color: #223041;
-  --nav-dropdown-background-color: #ffffff;
-  --nav-dropdown-hover-color: #12bfd8;
-}
+@use 'sass:color';
 
-.tis-page {
-  background: #f4f8fb;
-  overflow-x: hidden;
-}
 
-.tis-page section {
-  scroll-margin-top: 116px;
-}
+// ── 1. Design tokens ──────────────────────────────────────────
 
-.tis-page .header .header-container {
-  background: rgba(7, 23, 47, 0.92);
-  border: 1px solid rgba(53, 228, 255, 0.18);
-  box-shadow: 0 18px 44px rgba(7, 23, 47, 0.24);
-  backdrop-filter: blur(14px);
-}
+// Space palette
+$space:          #07112a;   // deepest hero fill
+$navy-deep:      #0c1e40;
+$navy:           #1a3a6b;   // primary — bluer & brighter than before
+$navy-light:     #2a548a;   // gradient stop, hover
 
-.tis-page .header .logo {
-  background: rgba(53, 228, 255, 0.12);
-  border: 1px solid rgba(53, 228, 255, 0.28);
-  gap: 10px;
-  padding: 6px 12px 6px 8px;
-  border-radius: 6px;
-}
+// Teal accent — elevated, more vivid
+$teal:           #0097a8;
+$teal-dark:      #007c8c;
+$teal-glow:      #00c8dc;   // hero highlights, glows
+$teal-light:     #e0f9fb;
+$teal-border:    #9ae5ed;
 
-.tis-page .navmenu a,
-.tis-page .navmenu a:focus {
-  color: #e8fbff;
-  font-weight: 600;
-}
+// Hero accent text
+$sky:            #7dd3fc;
 
-.tis-page .navmenu li:hover > a,
-.tis-page .navmenu .active,
-.tis-page .navmenu .active:focus {
-  color: #35e4ff;
-}
+// Neutrals
+$grey-text:      #374151;
+$grey-muted:     #6b7280;
+$grey-subtle:    #9ca3af;
+$grey-border:    #e2e8f0;
+$grey-bg:        #f7fbfc;
+$grey-light:     #f0f5f8;
+$white:          #ffffff;
 
-.tis-page .navmenu .dropdown ul a,
-.tis-page .navmenu .dropdown ul a:focus {
-  color: #223041;
-}
+// Stacks
+$font-heading:   'Rubik', 'Kanit', sans-serif;
 
-.tis-page .mobile-nav-toggle {
-  color: #e8fbff;
-}
+// Elevation
+$shadow-xs:  0 1px 3px rgba($space, 0.06);
+$shadow-sm:  0 2px 8px rgba($space, 0.08);
+$shadow-md:  0 6px 20px rgba($space, 0.12);
+$shadow-lg:  0 16px 48px rgba($space, 0.18);
+$shadow-xl:  0 28px 72px rgba($space, 0.24);
 
-.logo-symbol,
-.footer-logo-symbol {
-  border-radius: 6px;
-  flex: 0 0 auto;
-  height: 34px;
-  width: 34px;
-}
+// Shape & motion
+$radius:         4px;
+$radius-lg:      10px;
+$ease:           cubic-bezier(0.4, 0, 0.2, 1);
+$fast:           0.15s $ease;
+$mid:            0.25s $ease;
 
-.logo-text {
-  align-items: baseline;
-  display: inline-flex;
-  gap: 5px;
-  line-height: 1;
-}
 
-.logo-name {
-  color: #ffffff;
-  font-family: var(--heading-font);
-  font-size: 24px;
-  font-weight: 800;
-}
+// ── 2. Mixins ─────────────────────────────────────────────────
 
-.logo-year {
-  color: #35e4ff;
-  font-family: var(--heading-font);
-  font-size: 15px;
-  font-weight: 800;
-}
-
-.tis-page .btn-getstarted,
-.tis-page .btn-primary {
-  background: #ff9f1c;
-  border-color: #ff9f1c;
-  color: #07172f;
+@mixin upper-label($size: 11px, $spacing: 0.7px) {
+  font-size: $size;
   font-weight: 700;
-}
-
-.tis-page .btn-getstarted:hover,
-.tis-page .btn-primary:hover {
-  background: #ffc15a;
-  border-color: #ffc15a;
-  color: #07172f;
-}
-
-.tis-page .btn-outline-primary {
-  border-color: #35e4ff;
-  color: #35e4ff;
-}
-
-.tis-page .btn-outline-primary:hover {
-  background: #35e4ff;
-  color: #07172f;
-}
-
-/* Better contrast for outline buttons on light/white backgrounds */
-.tis-page .light-background .btn-outline-primary,
-.tis-page .info-card .btn-outline-primary,
-.tis-page .timeline-card .btn-outline-primary,
-.tis-page .topic-card .btn-outline-primary {
-  border-color: #068ca0;
-  color: #068ca0;
-}
-
-.tis-page .light-background .btn-outline-primary:hover,
-.tis-page .info-card .btn-outline-primary:hover,
-.tis-page .timeline-card .btn-outline-primary:hover,
-.tis-page .topic-card .btn-outline-primary:hover {
-  background: #068ca0;
-  color: #ffffff;
-}
-
-.tis-hero {
-  min-height: 100vh;
-  background:
-    radial-gradient(circle at 82% 22%, rgba(53, 228, 255, 0.18), transparent 34%),
-    linear-gradient(135deg, #07172f 0%, #082345 52%, #07172f 100%);
-  color: #d8f7ff;
-  isolation: isolate;
-  overflow: hidden;
-  padding-top: 140px;
-  position: relative;
-}
-
-.tis-hero::after {
-  background:
-    linear-gradient(90deg, rgba(7, 23, 47, 0.84) 0%, rgba(7, 23, 47, 0.78) 38%, rgba(7, 23, 47, 0.2) 64%, rgba(7, 23, 47, 0.38) 100%),
-    linear-gradient(180deg, rgba(7, 23, 47, 0.08), rgba(7, 23, 47, 0.84));
-  content: "";
-  inset: 0;
-  pointer-events: none;
-  position: absolute;
-  z-index: 0;
-}
-
-.tis-hero > .container {
-  position: relative;
-  z-index: 2;
-}
-
-.hero-satellite-art {
-  max-width: none;
-  opacity: 1;
-  pointer-events: none;
-  position: absolute;
-  left: 24px;
-  top: 116px;
-  width: min(88vw, 1160px);
-  z-index: 1;
-}
-
-.tis-hero .hero-kicker {
-  color: #ffb13b;
-  font-family: var(--heading-font);
-  font-size: 18px;
-  font-weight: 800;
-  letter-spacing: 0;
-  margin-bottom: 12px;
+  letter-spacing: $spacing;
   text-transform: uppercase;
 }
 
-.tis-hero .hero-title,
-.tis-hero .hero-subtitle,
-.tis-hero .hero-description,
-.tis-hero .countdown-title {
-  color: #ffffff;
+@mixin card-lift($y: 3px, $shadow: $shadow-md) {
+  transition: box-shadow $mid, transform $mid;
+  &:hover {
+    box-shadow: $shadow;
+    transform: translateY(-#{$y});
+  }
 }
 
-.tis-hero .hero-title {
-  max-width: 680px;
-  overflow-wrap: anywhere;
+@mixin track-chip($bg, $fg) {
+  background: $bg;
+  color: $fg;
 }
 
-.tis-hero .hero-description {
-  color: #d8f7ff;
-  max-width: 620px;
+@mixin teal-icon-box($size: 46px, $font: 22px) {
+  align-items: center;
+  border-radius: $radius;
+  display: inline-flex;
+  font-size: $font;
+  height: $size;
+  justify-content: center;
+  width: $size;
 }
 
-.tis-hero .detail-item {
-  color: #e8fbff !important;
+
+// ── 3. CSS custom properties ──────────────────────────────────
+
+:root {
+  --background-color: #{$white};
+  --default-color:    #{$grey-text};
+  --heading-color:    #{$navy};
+  --accent-color:     #{$teal};
+  --surface-color:    #{$white};
+  --contrast-color:   #{$white};
+  --nav-color:        #{$navy};
+  --nav-hover-color:  #{$teal};
+  --nav-dropdown-hover-color: #{$teal};
 }
 
-.tis-hero .detail-item i {
-  color: #35e4ff;
+
+// ── 4. Header ─────────────────────────────────────────────────
+
+// Inner pages: always solid white header
+.tis-page {
+  .header {
+    .header-container {
+      background: $white;
+      box-shadow: none;
+      border-bottom: 2px solid $navy;
+    }
+
+    .logo {
+      background: transparent;
+      gap: 4px;
+      padding: 0;
+      border-radius: 0;
+    }
+
+    .logo h1 {
+      color: $teal;
+      font-weight: 700;
+    }
+  }
 }
 
-.tis-hero .event-details .detail-item span,
-.tis-hero .countdown-wrapper .countdown-title {
-  color: #ffffff !important;
+// Home page: transparent over dark hero before scroll, solid after
+.index-page {
+  &:not(.scrolled) .header .header-container {
+    background: rgba($space, 0.55);
+    border-bottom: 1px solid rgba($white, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  // Nav links on dark background
+  &:not(.scrolled) .header .navmenu a {
+    color: rgba($white, 0.82);
+    &:hover, &.active { color: $teal-glow; }
+  }
+
+  &:not(.scrolled) .logo-mark { color: $white; }
+  &:not(.scrolled) .header .logo h1 { color: $teal-glow; }
+
+  // Once scrolled: reuse the solid white style
+  &.scrolled .header .header-container {
+    background: $white;
+    border-bottom: 2px solid $navy;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  &.scrolled .header .navmenu a { color: var(--nav-color); }
+  &.scrolled .logo-mark { color: $navy; }
+  &.scrolled .header .logo h1 { color: $teal; }
 }
 
-.footer-logo-symbol {
-  height: 42px;
-  margin-right: 10px;
-  width: 42px;
+.logo-mark {
+  color: $navy;
+  font-family: $font-heading;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1;
 }
 
-@media (max-width: 767px) {
-  .tis-page .header .logo {
+
+// ── 5. Buttons ────────────────────────────────────────────────
+
+.tis-page {
+
+  .btn-getstarted,
+  .btn-primary {
+    background: $navy;
+    border-color: $navy;
+    border-radius: $radius;
+    color: $white;
+    font-weight: 600;
+    transition: background $mid, border-color $mid, box-shadow $fast;
+
+    &:hover {
+      background: $teal;
+      border-color: $teal;
+      color: $white;
+      box-shadow: 0 4px 14px rgba($teal, 0.4);
+    }
+  }
+
+  .btn-outline-primary {
+    border-color: $teal;
+    border-radius: $radius;
+    color: $teal;
+    transition: background $mid, color $mid, box-shadow $fast;
+
+    &:hover {
+      background: $teal;
+      border-color: $teal;
+      color: $white;
+      box-shadow: 0 3px 10px rgba($teal, 0.3);
+    }
+  }
+
+  .info-card,
+  .timeline-card,
+  .topic-card,
+  .submission-panel {
+    .btn-outline-primary {
+      border-color: $teal;
+      color: $teal;
+      &:hover { background: $teal; border-color: $teal; color: $white; }
+    }
+  }
+}
+
+.tis-btn-ghost {
+  background: transparent;
+  border: 1px solid $navy;
+  border-radius: $radius;
+  color: $navy;
+  display: inline-block;
+  font-size: 0.8125rem;
+  padding: 0.25rem 0.75rem;
+  transition: background $mid, color $mid;
+
+  &:hover {
+    background: $navy;
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+
+// ── 6. Hero — satellite as full background ────────────────────
+
+.tis-hero {
+  align-items: center;
+  color: $white;
+  display: flex;
+  min-height: 92vh;
+  overflow: hidden;
+  padding-top: 130px;
+  padding-bottom: 80px;
+  position: relative;
+
+  // Satellite PNG at ~half cover size, anchored right; gradient darkens left text zone
+  background:
+    linear-gradient(
+      105deg,
+      rgba($space, 0.98)  0%,
+      rgba($space, 0.96) 32%,
+      rgba($space, 0.82) 55%,
+      rgba($space, 0.45) 72%,
+      rgba($space, 0.12) 100%
+    ),
+    url("../img/tis/tethered-satellite-hero.png") right center / auto 55% no-repeat,
+    $space;
+
+  // Fine grid overlay for spatial depth
+  &::before {
+    background-image:
+      linear-gradient(rgba($white, 0.022) 1px, transparent 1px),
+      linear-gradient(90deg, rgba($white, 0.022) 1px, transparent 1px);
+    background-size: 44px 44px;
+    content: '';
+    inset: 0;
+    pointer-events: none;
+    position: absolute;
+  }
+
+  // Teal radial glow in the upper right — echoes the satellite area
+  &::after {
+    background: radial-gradient(
+      ellipse at 78% 30%,
+      rgba($teal-glow, 0.14) 0%,
+      rgba($teal, 0.05) 38%,
+      transparent 65%
+    );
+    content: '';
+    inset: 0;
+    pointer-events: none;
+    position: absolute;
+  }
+
+  > .container {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-kicker {
+    color: color.adjust($sky, $lightness: 8%);
+    font-family: $font-heading;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .hero-title {
+    color: $white;
+    font-size: clamp(2.2rem, 4vw, 3rem);
+    font-weight: 800;
+    line-height: 1.08;
+    margin-bottom: 14px;
+    text-shadow: 0 3px 24px rgba($space, 0.6);
+  }
+
+  .hero-subtitle {
+    color: rgba($white, 0.62);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 0;
+    max-width: 400px;
+  }
+
+  .countdown-wrapper { display: none; }
+}
+
+// Hero fact table
+.tis-fact-table {
+  border-collapse: separate;
+  border-spacing: 0 8px;
+  margin-top: 1.5rem;
+
+  td {
+    color: rgba($white, 0.78);
+    font-size: 15px;
+    padding: 2px 10px 2px 0;
+    vertical-align: middle;
+
+    &:first-child {
+      color: $sky;
+      font-size: 18px;
+      padding-right: 10px;
+      width: 28px;
+    }
+  }
+
+  a {
+    color: $sky;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color $fast;
+    &:hover { color: $white; }
+  }
+}
+
+
+// ── 7. Announcement strip ─────────────────────────────────────
+
+.tis-announce {
+  background: $grey-bg;
+  border-bottom: 1px solid $grey-border;
+  padding: 10px 0;
+
+  .announce-content {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .announce-badge {
+    @include upper-label;
+    background: $navy;
+    border-radius: $radius;
+    color: $white;
     flex-shrink: 0;
-    padding-right: 10px;
+    padding: 3px 10px;
+    white-space: nowrap;
   }
 
-  .tis-page .header .header-container {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: calc(100% - 24px);
-    padding-left: 12px;
-    padding-right: 12px;
-    width: calc(100% - 24px);
+  .announce-text {
+    color: $grey-text;
+    font-size: 14px;
+    strong { color: $navy; font-weight: 700; }
+  }
+}
+
+
+// ── 8. Home — section headings & key dates table ──────────────
+
+.home-section-heading {
+  border-bottom: 2px solid $grey-border;
+  color: $navy;
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  position: relative;
+
+  &::after {
+    background: $teal;
+    bottom: -2px;
+    content: '';
+    height: 2px;
+    left: 0;
+    position: absolute;
+    width: 44px;
+  }
+}
+
+.home-section-subheading {
+  color: $navy;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.tis-dates-table {
+  font-size: 14px;
+
+  thead th {
+    @include upper-label(12px, 0.5px);
+    background: $navy;
+    color: $white;
+    font-weight: 600;
+    padding: 10px 12px;
   }
 
-  .tis-page .mobile-nav-toggle {
-    margin-left: auto;
-    margin-right: 0;
+  tbody tr:last-child {
+    background: $teal-light;
+    font-weight: 600;
   }
 
-  .tis-page [data-aos] {
-    opacity: 1 !important;
-    transform: none !important;
+  td {
+    padding: 9px 12px;
+    vertical-align: middle;
+    &:last-child { color: $navy; white-space: nowrap; }
   }
 
-  .logo-symbol {
-    height: 30px;
-    width: 30px;
+  .date-val {
+    color: $navy;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+}
+
+
+// ── 9. Inner page banner ──────────────────────────────────────
+
+.tis-page-banner {
+  background: linear-gradient(135deg, $space 0%, $navy-deep 55%, color.adjust($navy, $lightness: -8%) 100%);
+  border-bottom: 3px solid $teal;
+  overflow: hidden;
+  padding: 100px 0 32px;
+  position: relative;
+
+  // Teal glow top-right
+  &::before {
+    background: radial-gradient(ellipse at 85% 40%, rgba($teal-glow, 0.12) 0%, transparent 55%);
+    content: '';
+    inset: 0;
+    pointer-events: none;
+    position: absolute;
   }
 
-  .logo-name {
-    font-size: 21px;
+  // Diagonal stripe texture
+  &::after {
+    background: repeating-linear-gradient(
+      -55deg,
+      transparent,
+      transparent 32px,
+      rgba($white, 0.016) 32px,
+      rgba($white, 0.016) 33px
+    );
+    content: '';
+    inset: 0;
+    pointer-events: none;
+    position: absolute;
   }
 
-  .logo-year {
-    font-size: 13px;
+  h1 {
+    color: $white;
+    font-size: 1.85rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
   }
 
-  .tis-hero .hero-title {
-    font-size: clamp(2.25rem, 10vw, 2.75rem);
-    line-height: 1.05;
+  nav { position: relative; z-index: 1; }
+
+  .breadcrumb {
+    background: transparent;
+    margin: 0;
+    padding: 0;
   }
 
-  .tis-hero .hero-subtitle,
-  .tis-hero .hero-description,
-  .tis-hero .detail-item span {
-    overflow-wrap: anywhere;
+  .breadcrumb-item {
+    a {
+      color: $sky;
+      text-decoration: none;
+      transition: color $fast;
+      &:hover { color: $white; text-decoration: underline; }
+    }
+    &.active { color: rgba($white, 0.46); }
+    + .breadcrumb-item::before { color: rgba($white, 0.26); }
+  }
+}
+
+
+// ── 10. Inner page headings ───────────────────────────────────
+
+.page-heading {
+  border-bottom: 1px solid $grey-border;
+  border-left: 4px solid $teal;
+  color: $navy;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  padding: 0 0 12px 14px;
+}
+
+.page-lead {
+  color: $grey-muted;
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+  padding-left: 4px;
+}
+
+.page-section + .page-section {
+  border-top: 1px solid $grey-border;
+  margin-top: 3rem;
+  padding-top: 3rem;
+}
+
+
+// ── 11. Sidebar navigation ────────────────────────────────────
+
+.tis-sidebar-nav {
+  border: 1px solid $grey-border;
+  border-radius: $radius;
+  box-shadow: $shadow-sm;
+  overflow: hidden;
+  position: sticky;
+  top: 80px;
+
+  .sidebar-heading {
+    @include upper-label;
+    background: $navy;
+    color: $white;
+    display: block;
+    letter-spacing: 1px;
+    margin: 0;
+    padding: 10px 16px;
   }
 
-  .tis-hero .hero-actions {
-    display: grid;
-    gap: 12px;
+  ul { list-style: none; margin: 0; padding: 0; }
+
+  li a {
+    border-bottom: 1px solid $grey-light;
+    color: $grey-text;
+    display: block;
+    font-size: 14px;
+    padding: 10px 16px;
+    text-decoration: none;
+    transition: background $fast, color $fast, padding-left $fast;
+
+    &:hover {
+      background: $teal-light;
+      color: $teal;
+      padding-left: 22px;
+    }
+
+    &.active {
+      background: $teal-light;
+      border-left: 3px solid $teal;
+      color: $teal;
+      font-weight: 700;
+      padding-left: 13px;
+    }
   }
 
-  .tis-hero .hero-actions .btn {
-    margin-right: 0 !important;
-    width: 100%;
-  }
+  li:last-child a { border-bottom: none; }
+}
 
-  .tis-hero::after {
-    background:
-      linear-gradient(180deg, rgba(7, 23, 47, 0.58) 0%, rgba(7, 23, 47, 0.88) 36%, rgba(7, 23, 47, 0.9) 100%),
-      linear-gradient(90deg, rgba(7, 23, 47, 0.72) 0%, rgba(7, 23, 47, 0.22) 100%);
-  }
 
-  .hero-satellite-art {
-    left: 6px;
-    opacity: 0.95;
-    top: 82px;
-    width: 680px;
-  }
+// ── 12. Shared card base ──────────────────────────────────────
+
+%card-base {
+  background: var(--surface-color);
+  border: 1px solid $grey-border;
+  border-radius: $radius;
+  box-shadow: $shadow-xs;
+  height: 100%;
+  padding: 24px;
 }
 
 .tis-panel,
@@ -295,253 +592,492 @@
 .topic-card,
 .submission-panel,
 .committee-card,
-.info-card {
-  background: var(--surface-color);
-  border: 1px solid rgba(7, 23, 47, 0.08);
-  border-radius: 8px;
-  box-shadow: 0 16px 45px rgba(7, 23, 47, 0.08);
-  height: 100%;
-  padding: 30px;
-}
+.info-card { @extend %card-base; }
+
+
+// ── 13. Venue / context panels ────────────────────────────────
 
 .tis-panel {
-  background: linear-gradient(135deg, #ffffff 0%, #edf9fc 100%);
-  border-color: rgba(18, 191, 216, 0.2);
-  color: #223041;
+  background: linear-gradient(145deg, $white 0%, color.adjust($teal-light, $lightness: 3%) 100%);
+  border-color: rgba($teal, 0.16);
+  color: var(--default-color);
+
+  h3 {
+    color: $navy;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
 }
 
-.tis-panel h3 {
-  color: #07172f;
-  margin-bottom: 16px;
+
+// ── 14. Committee cards ───────────────────────────────────────
+
+.committee-card {
+  border-top: 3px solid $navy;
+  @include card-lift(4px, $shadow-md);
+
+  .card-top {
+    background: $grey-bg;
+    border-bottom: 1px solid $grey-border;
+    border-radius: $radius $radius 0 0;
+    margin: -24px -24px 18px;
+    padding: 20px 24px 16px;
+  }
+
+  h3 { color: $navy; font-size: 1.05rem; font-weight: 700; margin: 0 0 2px; }
+
+  .role {
+    @include upper-label(11px, 0.8px);
+    color: $teal;
+    display: block;
+    font-family: $font-heading;
+    margin-bottom: 8px;
+  }
+
+  .institution { color: $teal; font-size: 13px; font-weight: 600; margin: -2px 0 10px; }
 }
+
+.committee-avatar {
+  align-items: center;
+  background: linear-gradient(135deg, $navy 20%, $teal 100%);
+  border-radius: 50%;
+  box-shadow: 0 4px 14px rgba($navy, 0.32);
+  color: $white;
+  display: flex;
+  font-family: $font-heading;
+  font-size: 15px;
+  font-weight: 700;
+  height: 52px;
+  justify-content: center;
+  letter-spacing: 0.5px;
+  margin-bottom: 14px;
+  width: 52px;
+
+  &.tba {
+    background: linear-gradient(135deg, #8ca0b0, #aebdcc);
+    font-size: 11px;
+  }
+}
+
+
+// ── 15. Info cards ────────────────────────────────────────────
+
+.info-card {
+  text-align: left;
+  @include card-lift(3px, $shadow-sm);
+
+  > i:first-child {
+    @include teal-icon-box(46px, 22px);
+    background: $teal-light;
+    color: $teal;
+    margin-bottom: 14px;
+    transition: background $mid, color $mid;
+  }
+
+  &:hover > i:first-child {
+    background: $teal;
+    color: $white;
+  }
+
+  &.compact { padding: 20px; }
+  &.compact h4 { font-size: 16px; }
+
+  a:not(.btn) {
+    color: $teal;
+    font-weight: 600;
+    transition: color $fast;
+    &:hover { color: $navy; text-decoration: underline; }
+  }
+}
+
+
+// ── 16. Travel items ──────────────────────────────────────────
 
 .mini-card,
 .travel-item-simple {
   align-items: center;
-  background: rgba(255, 255, 255, 0.78);
-  border: 1px solid rgba(18, 191, 216, 0.16);
-  border-radius: 8px;
+  background: $grey-bg;
+  border: 1px solid $grey-border;
+  border-radius: $radius;
   display: flex;
-  gap: 12px;
-  min-height: 76px;
-  padding: 14px;
+  gap: 14px;
+  min-height: 62px;
+  padding: 12px 16px;
+  transition: background $fast, border-color $fast, box-shadow $fast;
+
+  &:hover {
+    background: $teal-light;
+    border-color: $teal-border;
+    box-shadow: $shadow-xs;
+  }
+
+  i { color: $teal; flex: 0 0 auto; font-size: 20px; }
+  span { color: $grey-text; font-size: 14px; line-height: 1.45; }
 }
 
-.mini-card i,
-.travel-item-simple i {
-  color: #35e4ff;
-  font-size: 24px;
-  flex: 0 0 auto;
+
+// ── 17. Topic list ────────────────────────────────────────────
+
+.tis-topic-list {
+  list-style: none;
+  margin: 0 0 4px;
+  padding: 0;
+
+  li {
+    border-bottom: 1px solid $grey-light;
+    color: $grey-text;
+    font-size: 14px;
+    padding: 5px 0 5px 18px;
+    position: relative;
+
+    &::before {
+      background: $teal;
+      border-radius: 50%;
+      content: '';
+      height: 6px;
+      left: 0;
+      position: absolute;
+      top: 13px;
+      width: 6px;
+    }
+
+    &:last-child { border-bottom: none; }
+  }
 }
 
-.travel-item-simple {
-  background: #f3f8fb;
-  color: #223041;
+.topic-card {
+  h4 {
+    @include upper-label(11px, 0.5px);
+    border-bottom: 2px solid $grey-border;
+    color: $navy;
+    margin-bottom: 10px;
+    padding-bottom: 7px;
+  }
+
+  ul {
+    color: $grey-text;
+    font-size: 14px;
+    margin-bottom: 0;
+    padding-left: 18px;
+    li { padding: 3px 0; }
+  }
 }
 
-.info-card {
-  text-align: left;
-}
 
-.info-card i {
-  align-items: center;
-  background: #e9fbff;
-  border-radius: 8px;
-  color: #068ca0;
-  display: inline-flex;
-  font-size: 28px;
-  height: 56px;
-  justify-content: center;
-  margin-bottom: 18px;
-  width: 56px;
-}
+// ── 18. TC member list ────────────────────────────────────────
 
-.info-card.compact {
-  padding: 24px;
-}
-
-.info-card.compact h4 {
-  font-size: 18px;
-}
-
-.committee-card .role {
-  color: #ff9f1c;
-  display: block;
-  font-family: var(--heading-font);
-  font-weight: 800;
-  margin-bottom: 12px;
-  text-transform: uppercase;
-}
-
-.date-row {
-  align-items: flex-start;
-  border-bottom: 1px solid rgba(7, 23, 47, 0.1);
-  display: flex;
-  gap: 16px;
-  justify-content: space-between;
-  padding: 15px 0;
-}
-
-.date-row:first-of-type {
-  padding-top: 4px;
-}
-
-.date-row strong {
-  color: #068ca0;
-  text-align: right;
-  white-space: nowrap;
-}
-
-.topic-card h4 {
-  color: #068ca0;
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.topic-card ul {
-  margin-bottom: 0;
-  padding-left: 20px;
-}
-
-.detail-list {
+.tc-list {
   list-style: none;
   margin: 0;
   padding: 0;
+
+  li {
+    align-items: baseline;
+    border-bottom: 1px solid $grey-light;
+    color: $grey-text;
+    display: flex;
+    font-size: 14px;
+    gap: 8px;
+    padding: 7px 0;
+
+    &::before {
+      background: $teal;
+      border-radius: 50%;
+      content: '';
+      display: inline-block;
+      flex-shrink: 0;
+      height: 5px;
+      margin-top: 2px;
+      min-width: 5px;
+      width: 5px;
+    }
+
+    &:last-child { border-bottom: none; }
+  }
 }
 
-.detail-list li {
-  border-bottom: 1px solid rgba(7, 23, 47, 0.08);
-  color: #223041;
-  line-height: 1.45;
-  padding: 9px 0;
-}
 
-.detail-list li:first-child {
-  padding-top: 0;
-}
+// ── 19. Timeline card ─────────────────────────────────────────
 
-.detail-list li:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
+.timeline-card { border-top: 3px solid $navy; }
 
-.detail-list strong {
-  color: #068ca0;
-}
+
+// ── 20. Submission ────────────────────────────────────────────
 
 .submission-panel {
-  background: linear-gradient(135deg, #ffffff 0%, #edf9fc 100%);
-  border-color: rgba(18, 191, 216, 0.2);
-  color: #223041;
+  background: linear-gradient(145deg, $teal-light 0%, color.adjust($teal-light, $lightness: 2%) 100%);
+  border-color: $teal-border;
+  border-left: 4px solid $teal;
+  color: $grey-text;
+  @include card-lift(3px);
+
+  h3 {
+    align-items: center;
+    color: $navy;
+    display: flex;
+    font-size: 1rem;
+    font-weight: 700;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  p { font-size: 14px; margin-bottom: 0; }
 }
 
-.submission-panel h3 {
-  color: #07172f;
-}
-
-.media-poster {
-  border-radius: 8px;
-  box-shadow: 0 20px 60px rgba(7, 23, 47, 0.18);
-}
-
-.conference-focus {
-  background:
-    radial-gradient(circle at 96% 10%, rgba(53, 228, 255, 0.18), transparent 32%),
-    linear-gradient(135deg, #ffffff 0%, #edf9fc 100%);
-  border: 1px solid rgba(18, 191, 216, 0.22);
-  border-radius: 8px;
-  box-shadow: 0 18px 50px rgba(7, 23, 47, 0.08);
-  color: #223041;
-  margin-top: 34px;
-  padding: clamp(24px, 4vw, 38px);
-}
-
-.focus-heading {
-  border-bottom: 1px solid rgba(7, 23, 47, 0.1);
-  margin-bottom: 22px;
-  padding-bottom: 18px;
-}
-
-.focus-heading span {
-  color: #ffb13b;
-  display: block;
-  font-family: var(--heading-font);
-  font-size: 0.82rem;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  margin-bottom: 6px;
-  text-transform: uppercase;
-}
-
-.focus-heading h3 {
-  color: #07172f;
-  font-size: clamp(1.35rem, 2vw, 2rem);
-  margin: 0;
-}
-
-.focus-grid {
-  display: grid;
-  gap: 18px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.focus-item {
+.submission-notice {
   align-items: flex-start;
+  background: $grey-bg;
+  border: 1px solid $grey-border;
+  border-left: 4px solid $navy;
+  border-radius: $radius;
   display: flex;
   gap: 14px;
-  min-width: 0;
+  margin-bottom: 28px;
+  padding: 16px 20px;
+
+  i { color: $navy; flex-shrink: 0; font-size: 20px; margin-top: 2px; }
+  p { color: $grey-text; font-size: 14px; margin: 0; }
 }
 
-.focus-item i {
+
+// ── 21. Program schedule ──────────────────────────────────────
+
+.schedule {
+  .nav-tabs {
+    border-bottom: 2px solid $grey-border;
+    gap: 2px;
+  }
+
+  // Override Bootstrap's filled active-tab style with an underline-only approach
+  .nav-tabs .nav-link {
+    background-color: transparent !important;
+    border: none !important;
+    border-bottom: 2px solid transparent !important;
+    border-radius: 0 !important;
+    color: $grey-muted;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: -2px;
+    padding: 10px 20px;
+    transition: color $fast, border-color $fast;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: transparent !important;
+      border-bottom-color: $teal-border !important;
+      color: $navy;
+    }
+
+    &.active,
+    &:focus-visible {
+      background-color: transparent !important;
+      border-bottom: 2px solid $teal !important;
+      border-top: none !important;
+      border-left: none !important;
+      border-right: none !important;
+      box-shadow: none !important;
+      color: $navy;
+      font-weight: 700;
+      outline: none;
+    }
+  }
+}
+
+.tab-content { padding-top: 22px; }
+
+.session-timeline { display: flex; flex-direction: column; gap: 16px; }
+
+.session-block { align-items: flex-start; display: flex; gap: 16px; }
+
+.session-time {
   align-items: center;
-  background: #dff8fd;
-  border: 1px solid rgba(18, 191, 216, 0.25);
-  border-radius: 8px;
-  color: #068ca0;
-  display: inline-flex;
-  flex: 0 0 auto;
-  font-size: 22px;
-  height: 46px;
-  justify-content: center;
-  width: 46px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  min-width: 52px;
+  padding-top: 14px;
+
+  .start { color: $navy; font-size: 15px; font-weight: 700; line-height: 1; }
+  .end   { @include upper-label(11px, 0.5px); color: $grey-subtle; margin-top: 3px; }
 }
 
-.focus-item h4 {
-  color: #07172f;
-  font-size: 1rem;
-  margin: 0 0 5px;
+.session-card {
+  background: $white;
+  border: 1px solid $grey-border;
+  border-left: 3px solid $teal;
+  border-radius: $radius;
+  flex: 1;
+  padding: 14px 20px;
+  transition: border-left-color $fast, box-shadow $fast;
+
+  &:hover {
+    border-left-color: $navy;
+    box-shadow: $shadow-sm;
+  }
 }
 
-.focus-item p {
-  color: #42556b;
-  line-height: 1.45;
-  margin: 0;
+.session-meta { align-items: center; display: flex; gap: 8px; margin-bottom: 7px; }
+
+.track {
+  @include upper-label;
+  border-radius: $radius;
+  padding: 3px 9px;
+
+  &.keynote     { @include track-chip(#e0f2fe, #0369a1); }
+  &.development { @include track-chip(#dcfce7, #15803d); }
+  &.business    { @include track-chip(#f3e8ff, #7e22ce); }
 }
+
+.room { color: $grey-subtle; font-size: 12px; font-style: italic; }
+
+.session-title { color: $navy; font-size: 15px; font-weight: 700; margin: 0 0 5px; }
+.session-description { color: $grey-muted; font-size: 13px; line-height: 1.5; margin: 0; }
+
+
+// ── 22. Media poster ──────────────────────────────────────────
+
+.media-poster {
+  border: 1px solid $grey-border;
+  border-radius: $radius;
+  box-shadow: $shadow-md;
+  display: block;
+  transition: box-shadow $mid, transform $mid;
+  width: 100%;
+
+  &:hover { box-shadow: $shadow-xl; transform: scale(1.015); }
+}
+
+
+// ── 23. Date rows (legacy) ────────────────────────────────────
+
+.date-row {
+  align-items: flex-start;
+  border-bottom: 1px solid $grey-border;
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  padding: 12px 0;
+
+  &:first-of-type { padding-top: 4px; }
+
+  strong { color: $navy; font-weight: 700; text-align: right; white-space: nowrap; }
+}
+
+
+// ── 24. About section ─────────────────────────────────────────
+
+.about {
+  .feature-card {
+    border-radius: $radius;
+    border-top: 3px solid $teal;
+    transition: box-shadow $mid;
+    &:hover { box-shadow: $shadow-md; }
+    .feature-icon { color: $teal; }
+  }
+  .stats-grid .stat-number { color: $navy; }
+}
+
+.tis-page .about .cta-section {
+  background: $teal-light;
+  border: 1px solid $teal-border;
+  border-radius: $radius;
+
+  h3 { color: $navy; }
+
+  .btn-outline {
+    background: transparent;
+    border: 2px solid $navy;
+    border-radius: $radius;
+    color: $navy;
+    font-weight: 600;
+    padding: 0.55rem 1.3rem;
+    transition: background $mid, color $mid;
+
+    &:hover { background: $navy; color: $white; }
+  }
+}
+
+
+// ── 25. Generic card heading ──────────────────────────────────
+
+.card-inner-heading {
+  color: $navy;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+
+// ── 26. Footer ────────────────────────────────────────────────
+
+.footer {
+  .footer-links {
+    h4 { color: $navy; }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        margin-bottom: 6px;
+        a {
+          color: $grey-muted;
+          font-size: 14px;
+          text-decoration: none;
+          transition: color $fast;
+          &:hover { color: $teal; }
+        }
+      }
+    }
+  }
+
+  .credits {
+    color: rgba($grey-text, 0.55);
+    font-size: 13px;
+    margin-top: 6px;
+  }
+}
+
+
+// ── 26. Responsive ────────────────────────────────────────────
 
 @media (max-width: 1199px) {
-  .tis-page .btn-getstarted {
-    display: none;
+  .tis-page .btn-getstarted { display: none; }
+}
+
+@media (max-width: 991px) {
+  .tis-announce {
+    .col-lg-4 { text-align: center !important; }
+    .announce-content { justify-content: center; }
   }
+
+  .schedule .nav-tabs { flex-wrap: wrap; }
 }
 
 @media (max-width: 767px) {
   .tis-hero {
-    padding-top: 120px;
-  }
+    min-height: 100svh;
+    padding-bottom: 48px;
+    padding-top: 96px;
 
-  .tis-hero .hero-kicker {
-    font-size: 15px;
+    // On mobile: satellite smaller, centred, overlaid heavily so text is readable
+    background:
+      linear-gradient(
+        180deg,
+        rgba($space, 0.97) 0%,
+        rgba($space, 0.88) 55%,
+        rgba($space, 0.65) 100%
+      ),
+      url("../img/tis/tethered-satellite-hero.png") 70% center / auto 38% no-repeat,
+      $space;
+
+    .hero-kicker { font-size: 10px; letter-spacing: 2px; }
   }
 
   .date-row {
     display: block;
-  }
-
-  .date-row strong {
-    display: block;
-    margin-top: 6px;
-    text-align: left;
-    white-space: normal;
+    strong { display: block; margin-top: 4px; text-align: left; white-space: normal; }
   }
 
   .tis-panel,
@@ -549,283 +1085,13 @@
   .topic-card,
   .submission-panel,
   .committee-card,
-  .info-card {
-    padding: 22px;
+  .info-card { padding: 18px; }
+
+  .session-block { flex-direction: column; gap: 8px; }
+  .session-time {
+    flex-direction: row;
+    gap: 6px;
+    min-width: unset;
+    padding-top: 0;
   }
-
-  .conference-focus {
-    margin-top: 26px;
-    padding: 22px;
-  }
-
-  .focus-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .focus-item {
-    gap: 12px;
-  }
-}
-
-/* Announcement strip */
-.tis-announce {
-  background: linear-gradient(90deg, #07172f 0%, #0b2650 100%);
-  border-bottom: 2px solid rgba(53, 228, 255, 0.2);
-  padding: 13px 0;
-}
-
-.tis-announce .announce-content {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.tis-announce .announce-badge {
-  background: #ff9f1c;
-  color: #07172f;
-  font-family: var(--heading-font);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  padding: 3px 12px;
-  border-radius: 20px;
-  text-transform: uppercase;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.tis-announce .announce-text {
-  color: #88c8e0;
-  font-size: 14px;
-}
-
-.tis-announce .announce-text strong {
-  color: #35e4ff;
-  font-weight: 700;
-}
-
-.tis-btn-ghost {
-  border: 1px solid rgba(53, 228, 255, 0.4);
-  color: #35e4ff;
-  background: transparent;
-  font-size: .8125rem;
-  padding: .25rem .75rem;
-  border-radius: .375rem;
-  display: inline-block;
-  transition: background .2s;
-}
-
-.tis-btn-ghost:hover {
-  background: rgba(53, 228, 255, 0.12);
-  color: #35e4ff;
-  text-decoration: none;
-}
-
-@media (max-width: 991px) {
-  .tis-announce .col-lg-4 {
-    text-align: center !important;
-  }
-  .tis-announce .announce-content {
-    justify-content: center;
-  }
-}
-
-/* Countdown: glass tiles on dark hero */
-.tis-hero .countdown > div {
-  background: rgba(255, 255, 255, 0.07) !important;
-  border-color: rgba(53, 228, 255, 0.22) !important;
-  backdrop-filter: blur(6px);
-}
-
-.tis-hero .countdown > div h3 {
-  color: #35e4ff !important;
-  font-size: 2.25rem;
-}
-
-.tis-hero .countdown > div h4 {
-  color: rgba(216, 247, 255, 0.65) !important;
-}
-
-/* Committee cards */
-.committee-card {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.committee-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 28px 65px rgba(7, 23, 47, 0.14);
-}
-
-.committee-card .institution {
-  color: #068ca0;
-  font-size: 13px;
-  font-weight: 600;
-  margin: -2px 0 10px;
-}
-
-.committee-note {
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
-  font-size: 0.85rem;
-}
-
-/* Info-card hover and link color */
-.info-card {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.info-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 24px 55px rgba(7, 23, 47, 0.13);
-}
-
-.info-card a:not(.btn) {
-  color: #068ca0;
-  font-weight: 600;
-}
-
-.info-card a:not(.btn):hover {
-  color: #12bfd8;
-  text-decoration: underline;
-}
-
-/* Submission panels top accent */
-.submission-panel {
-  border-top: 4px solid #35e4ff;
-}
-
-/* Session block left accent */
-.schedule .schedule-content .session-timeline .session-block .session-card {
-  border-left: 4px solid rgba(18, 191, 216, 0.4);
-}
-
-/* About section CTA banner */
-.tis-page .about .cta-section {
-  background: linear-gradient(135deg, #f0fbff, rgba(18, 191, 216, 0.07));
-  border-color: rgba(18, 191, 216, 0.2);
-}
-
-.tis-page .about .cta-section h3 {
-  color: #07172f;
-}
-
-.tis-page .about .cta-section .btn-outline {
-  border: 2px solid #068ca0;
-  color: #068ca0;
-  background: transparent;
-  padding: .75rem 1.5rem;
-  border-radius: .375rem;
-  font-weight: 600;
-  transition: background .2s, color .2s;
-}
-
-.tis-page .about .cta-section .btn-outline:hover {
-  background: #068ca0;
-  color: #fff;
-}
-
-/* Committee avatar circles */
-.committee-avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #068ca0, #12bfd8);
-  color: #ffffff;
-  font-family: var(--heading-font);
-  font-size: 17px;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 18px;
-  letter-spacing: 0.5px;
-}
-
-.committee-avatar.tba {
-  background: linear-gradient(135deg, #8ca0b0, #aebdcc);
-  font-size: 13px;
-}
-
-/* Committee card top accent */
-.committee-card {
-  border-top: 4px solid #12bfd8;
-}
-
-/* Technical Committee member list */
-.tc-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.tc-list li {
-  padding: 7px 0;
-  border-bottom: 1px solid rgba(7, 23, 47, 0.08);
-  font-size: 14px;
-  color: #223041;
-  display: flex;
-  align-items: baseline;
-  gap: 6px;
-}
-
-.tc-list li::before {
-  content: "";
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  min-width: 6px;
-  border-radius: 50%;
-  background: #12bfd8;
-  margin-top: 2px;
-}
-
-.tc-list li:last-child {
-  border-bottom: none;
-}
-
-/* Section title descriptions */
-.section-title p {
-  max-width: 640px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Timeline card left accent bar */
-.timeline-card {
-  border-left: 4px solid #12bfd8;
-}
-
-/* Topic card heading teal dot */
-.topic-card h4::before {
-  content: "";
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #12bfd8;
-  margin-right: 8px;
-  vertical-align: middle;
-}
-
-/* Travel items teal icon */
-.travel-item-simple i {
-  color: #068ca0;
-}
-
-/* Mini-card text */
-.mini-card span {
-  font-size: 14px;
-  line-height: 1.4;
-}
-
-/* Submission panel paired layout gap */
-.submission-panel + .submission-panel {
-  margin-top: 0;
-}
-
-/* Program tab active accent */
-.schedule .schedule-header .nav-tabs .nav-link.active {
-  border-bottom-color: #12bfd8;
-  color: #068ca0;
-  font-weight: 700;
 }

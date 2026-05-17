@@ -1,0 +1,9 @@
+{
+  "name": "tis2027-web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "sass": "sass --no-source-map assets/scss/tis2027.scss assets/css/tis2027.css",
+    "sass:watch": "sass --no-source-map --watch assets/scss/tis2027.scss assets/css/tis2027.css"
+  }
+}
