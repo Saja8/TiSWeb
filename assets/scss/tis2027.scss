@@ -114,19 +114,9 @@
   position: relative;
 }
 
-.tis-hero::before {
-  background: url("../img/tis/tethered-satellite-hero.png") right -80px top 145px / min(80vw, 1120px) auto no-repeat;
-  content: "";
-  inset: 0;
-  opacity: 0.9;
-  pointer-events: none;
-  position: absolute;
-  z-index: 0;
-}
-
 .tis-hero::after {
   background:
-    linear-gradient(90deg, rgba(7, 23, 47, 0.97) 0%, rgba(7, 23, 47, 0.92) 40%, rgba(7, 23, 47, 0.46) 66%, rgba(7, 23, 47, 0.58) 100%),
+    linear-gradient(90deg, rgba(7, 23, 47, 0.97) 0%, rgba(7, 23, 47, 0.9) 40%, rgba(7, 23, 47, 0.36) 66%, rgba(7, 23, 47, 0.46) 100%),
     linear-gradient(180deg, rgba(7, 23, 47, 0.2), rgba(7, 23, 47, 0.88));
   content: "";
   inset: 0;
@@ -138,6 +128,17 @@
 .tis-hero > .container {
   position: relative;
   z-index: 1;
+}
+
+.hero-satellite-art {
+  max-width: none;
+  opacity: 0.92;
+  pointer-events: none;
+  position: absolute;
+  right: 22px;
+  top: 142px;
+  width: min(72vw, 980px);
+  z-index: 0;
 }
 
 .tis-hero .hero-kicker {
@@ -245,14 +246,15 @@
     width: 100%;
   }
 
-  .tis-hero::before {
-    background-position: center bottom 16px;
-    background-size: 850px auto;
-    opacity: 0.34;
+  .tis-hero::after {
+    background: linear-gradient(180deg, rgba(7, 23, 47, 0.76) 0%, rgba(7, 23, 47, 0.93) 42%, rgba(7, 23, 47, 0.88) 100%);
   }
 
-  .tis-hero::after {
-    background: linear-gradient(180deg, rgba(7, 23, 47, 0.94), rgba(7, 23, 47, 0.88));
+  .hero-satellite-art {
+    opacity: 0.72;
+    right: 20px;
+    top: 70px;
+    width: 620px;
   }
 }
 
@@ -407,6 +409,80 @@
   box-shadow: 0 20px 60px rgba(7, 23, 47, 0.18);
 }
 
+.conference-focus {
+  background:
+    radial-gradient(circle at 92% 12%, rgba(53, 228, 255, 0.15), transparent 28%),
+    linear-gradient(135deg, #07172f, #0b2b52);
+  border: 1px solid rgba(18, 191, 216, 0.22);
+  border-radius: 8px;
+  box-shadow: 0 22px 60px rgba(7, 23, 47, 0.14);
+  color: #d8f7ff;
+  margin-top: 34px;
+  padding: clamp(24px, 4vw, 38px);
+}
+
+.focus-heading {
+  border-bottom: 1px solid rgba(216, 247, 255, 0.16);
+  margin-bottom: 22px;
+  padding-bottom: 18px;
+}
+
+.focus-heading span {
+  color: #ffb13b;
+  display: block;
+  font-family: var(--heading-font);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.focus-heading h3 {
+  color: #ffffff;
+  font-size: clamp(1.35rem, 2vw, 2rem);
+  margin: 0;
+}
+
+.focus-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.focus-item {
+  align-items: flex-start;
+  display: flex;
+  gap: 14px;
+  min-width: 0;
+}
+
+.focus-item i {
+  align-items: center;
+  background: rgba(53, 228, 255, 0.12);
+  border: 1px solid rgba(53, 228, 255, 0.26);
+  border-radius: 8px;
+  color: #35e4ff;
+  display: inline-flex;
+  flex: 0 0 auto;
+  font-size: 22px;
+  height: 46px;
+  justify-content: center;
+  width: 46px;
+}
+
+.focus-item h4 {
+  color: #ffffff;
+  font-size: 1rem;
+  margin: 0 0 5px;
+}
+
+.focus-item p {
+  color: #b9deea;
+  line-height: 1.45;
+  margin: 0;
+}
+
 @media (max-width: 1199px) {
   .tis-page .btn-getstarted {
     display: none;
@@ -440,6 +516,19 @@
   .committee-card,
   .info-card {
     padding: 22px;
+  }
+
+  .conference-focus {
+    margin-top: 26px;
+    padding: 22px;
+  }
+
+  .focus-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .focus-item {
+    gap: 12px;
   }
 }
 
@@ -625,21 +714,6 @@
 /* Committee card top accent */
 .committee-card {
   border-top: 4px solid #12bfd8;
-}
-
-/* Feature cards (About) */
-.about .feature-card {
-  border-top: 3px solid #12bfd8;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.about .feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 50px rgba(7, 23, 47, 0.12);
-}
-
-.about .feature-card .feature-icon {
-  color: #068ca0;
 }
 
 /* Technical Committee member list */
