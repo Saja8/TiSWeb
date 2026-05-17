@@ -1,3 +1,7 @@
+// out: ../css/tis2027.css
+// Custom TiS 2027 conference layer. Keep conference-specific overrides here;
+// the BootstrapMade template SCSS continues to compile to main.css.
+
 :root {
   --background-color: #ffffff;
   --default-color: #223041;
@@ -100,7 +104,9 @@
 
 .tis-hero {
   min-height: 100vh;
-  background: linear-gradient(135deg, rgba(7, 23, 47, 0.95), rgba(6, 38, 76, 0.9)), url("../img/events/gallery-7.webp") center/cover;
+  background:
+    linear-gradient(135deg, rgba(7, 23, 47, 0.95), rgba(6, 38, 76, 0.9)),
+    url("../img/events/gallery-7.webp") center / cover;
   color: #d8f7ff;
   padding-top: 140px;
 }
@@ -146,7 +152,9 @@
 }
 
 .tis-identity-panel {
-  background: radial-gradient(circle at 78% 18%, rgba(53, 228, 255, 0.24), transparent 26%), linear-gradient(145deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.04));
+  background:
+    radial-gradient(circle at 78% 18%, rgba(53, 228, 255, 0.24), transparent 26%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.04));
   border: 1px solid rgba(216, 247, 255, 0.22);
   border-radius: 8px;
   box-shadow: 0 28px 90px rgba(0, 0, 0, 0.32);
@@ -157,7 +165,9 @@
 }
 
 .tis-identity-panel::before {
-  background-image: linear-gradient(rgba(216, 247, 255, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(216, 247, 255, 0.08) 1px, transparent 1px);
+  background-image:
+    linear-gradient(rgba(216, 247, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(216, 247, 255, 0.08) 1px, transparent 1px);
   background-size: 42px 42px;
   content: "";
   inset: 0;
@@ -327,6 +337,7 @@
     flex-shrink: 0;
     padding-right: 10px;
   }
+
   .tis-page .header .header-container {
     margin-left: auto;
     margin-right: auto;
@@ -335,80 +346,100 @@
     padding-right: 12px;
     width: calc(100% - 24px);
   }
+
   .tis-page .mobile-nav-toggle {
     margin-left: auto;
     margin-right: 0;
   }
+
   .tis-page [data-aos] {
     opacity: 1 !important;
     transform: none !important;
   }
+
   .logo-symbol {
     height: 30px;
     width: 30px;
   }
+
   .logo-name {
     font-size: 21px;
   }
+
   .logo-year {
     font-size: 13px;
   }
+
   .tis-hero .hero-title {
     font-size: clamp(2.25rem, 10vw, 2.75rem);
     line-height: 1.05;
   }
+
   .tis-hero .hero-subtitle,
   .tis-hero .hero-description,
   .tis-hero .detail-item span {
     overflow-wrap: anywhere;
   }
+
   .tis-hero .hero-actions {
     display: grid;
     gap: 12px;
   }
+
   .tis-hero .hero-actions .btn {
     margin-right: 0 !important;
     width: 100%;
   }
+
   .tis-identity-panel {
     min-height: auto;
     padding: 24px;
   }
+
   .orbit-visual {
     height: 170px;
     margin-bottom: 24px;
   }
+
   .satellite {
     height: 34px;
     width: 50px;
   }
+
   .satellite::before,
   .satellite::after {
     height: 24px;
     width: 28px;
   }
+
   .satellite::before {
     left: -34px;
   }
+
   .satellite::after {
     right: -34px;
   }
+
   .identity-brand {
     gap: 12px;
   }
+
   .identity-mark {
     height: 54px;
     width: 54px;
   }
+
   .identity-meta div {
     align-items: flex-start;
     flex-direction: column;
     gap: 4px;
   }
+
   .identity-meta strong {
     text-align: left;
   }
 }
+
 .tis-panel,
 .timeline-card,
 .topic-card,
@@ -545,22 +576,27 @@
     display: none;
   }
 }
+
 @media (max-width: 767px) {
   .tis-hero {
     padding-top: 120px;
   }
+
   .tis-hero .hero-kicker {
     font-size: 15px;
   }
+
   .date-row {
     display: block;
   }
+
   .date-row strong {
     display: block;
     margin-top: 6px;
     text-align: left;
     white-space: normal;
   }
+
   .tis-panel,
   .timeline-card,
   .topic-card,
@@ -570,14 +606,17 @@
     padding: 22px;
   }
 }
+
 @media (max-width: 991px) {
   .tis-hero .row .col-lg-6:first-child {
     order: 0;
   }
+
   .tis-hero .row .col-lg-6:last-child {
     order: 1;
   }
 }
+
 /* Announcement strip */
 .tis-announce {
   background: linear-gradient(90deg, #07172f 0%, #0b2650 100%);
@@ -620,11 +659,11 @@
   border: 1px solid rgba(53, 228, 255, 0.4);
   color: #35e4ff;
   background: transparent;
-  font-size: 0.8125rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: 0.375rem;
+  font-size: .8125rem;
+  padding: .25rem .75rem;
+  border-radius: .375rem;
   display: inline-block;
-  transition: background 0.2s;
+  transition: background .2s;
 }
 
 .tis-btn-ghost:hover {
@@ -641,6 +680,7 @@
     justify-content: center;
   }
 }
+
 /* Countdown: glass tiles on dark hero */
 .tis-hero .countdown > div {
   background: rgba(255, 255, 255, 0.07) !important;
@@ -723,10 +763,10 @@
   border: 2px solid #068ca0;
   color: #068ca0;
   background: transparent;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.375rem;
+  padding: .75rem 1.5rem;
+  border-radius: .375rem;
   font-weight: 600;
-  transition: background 0.2s, color 0.2s;
+  transition: background .2s, color .2s;
 }
 
 .tis-page .about .cta-section .btn-outline:hover {
