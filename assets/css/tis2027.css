@@ -1,0 +1,666 @@
+:root {
+  --background-color: #ffffff;
+  --default-color: #223041;
+  --heading-color: #07172f;
+  --accent-color: #12bfd8;
+  --surface-color: #ffffff;
+  --contrast-color: #ffffff;
+  --nav-color: #0b1b33;
+  --nav-hover-color: #12bfd8;
+  --nav-dropdown-hover-color: #12bfd8;
+}
+
+.tis-page {
+  background: #ffffff;
+}
+
+.tis-page .header .header-container {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 30px rgba(7, 23, 47, 0.12);
+}
+
+.tis-page .header .logo {
+  background: #07172f;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 6px;
+}
+
+.logo-mark {
+  color: #35e4ff;
+  font-family: var(--heading-font);
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.tis-page .header .logo h1 {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.tis-page .btn-getstarted,
+.tis-page .btn-primary {
+  background: #ff9f1c;
+  border-color: #ff9f1c;
+  color: #07172f;
+  font-weight: 700;
+}
+
+.tis-page .btn-getstarted:hover,
+.tis-page .btn-primary:hover {
+  background: #ffc15a;
+  border-color: #ffc15a;
+  color: #07172f;
+}
+
+.tis-page .btn-outline-primary {
+  border-color: #35e4ff;
+  color: #35e4ff;
+}
+
+.tis-page .btn-outline-primary:hover {
+  background: #35e4ff;
+  color: #07172f;
+}
+
+/* Better contrast for outline buttons on light/white backgrounds */
+.tis-page .light-background .btn-outline-primary,
+.tis-page .info-card .btn-outline-primary,
+.tis-page .timeline-card .btn-outline-primary,
+.tis-page .topic-card .btn-outline-primary {
+  border-color: #068ca0;
+  color: #068ca0;
+}
+
+.tis-page .light-background .btn-outline-primary:hover,
+.tis-page .info-card .btn-outline-primary:hover,
+.tis-page .timeline-card .btn-outline-primary:hover,
+.tis-page .topic-card .btn-outline-primary:hover {
+  background: #068ca0;
+  color: #ffffff;
+}
+
+.tis-hero {
+  min-height: 100vh;
+  background:
+    linear-gradient(135deg, rgba(7, 23, 47, 0.95), rgba(6, 38, 76, 0.9)),
+    url("../img/events/gallery-7.webp") center / cover;
+  color: #d8f7ff;
+  padding-top: 140px;
+}
+
+.tis-hero .hero-kicker {
+  color: #ffb13b;
+  font-family: var(--heading-font);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.tis-hero .hero-title,
+.tis-hero .hero-subtitle,
+.tis-hero .hero-description,
+.tis-hero .countdown-title {
+  color: #ffffff;
+}
+
+.tis-hero .hero-title {
+  max-width: 680px;
+}
+
+.tis-hero .hero-description {
+  color: #d8f7ff;
+  max-width: 620px;
+}
+
+.tis-hero .detail-item {
+  color: #e8fbff !important;
+}
+
+.tis-hero .detail-item i {
+  color: #35e4ff;
+}
+
+.tis-hero .event-details .detail-item span,
+.tis-hero .countdown-wrapper .countdown-title {
+  color: #ffffff !important;
+}
+
+.tis-flyer-frame {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(53, 228, 255, 0.24);
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.tis-flyer-frame .hero-image {
+  border-radius: 8px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
+}
+
+/* Keep badges inside the flyer frame — higher specificity beats main.css absolute rule */
+.tis-hero .tis-flyer-frame .floating-badges {
+  position: static !important;
+  flex-direction: row;
+  flex-wrap: wrap;
+  transform: none !important;
+  margin-top: 1.25rem;
+  gap: 0.75rem;
+  justify-content: flex-start;
+}
+
+.tis-hero .tis-flyer-frame .floating-badges .badge-item {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(53, 228, 255, 0.4);
+  color: #d8f7ff;
+  white-space: normal;
+}
+
+.tis-hero .tis-flyer-frame .floating-badges .badge-item span {
+  color: #d8f7ff;
+}
+
+.tis-hero .tis-flyer-frame .floating-badges .badge-item i {
+  color: #35e4ff;
+}
+
+/* Stats grid: 4 columns only at full width; 2×2 when inside col-lg-6 */
+.about .col-lg-6 .stats-grid {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 1400px) {
+  .about .col-lg-6 .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+/* Stat numbers: prevent text overflow on narrow cells */
+.about .stat-item {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.about .stat-item .stat-number {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  overflow-wrap: break-word;
+}
+
+/* Technical Committee list */
+.tc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tc-list li {
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(7, 23, 47, 0.07);
+  font-size: 0.875rem;
+  color: var(--default-color);
+  line-height: 1.4;
+}
+
+.tc-list li:last-child {
+  border-bottom: none;
+}
+
+.tis-panel,
+.timeline-card,
+.topic-card,
+.submission-panel,
+.committee-card,
+.info-card {
+  background: var(--surface-color);
+  border: 1px solid rgba(7, 23, 47, 0.08);
+  border-radius: 8px;
+  box-shadow: 0 16px 45px rgba(7, 23, 47, 0.08);
+  height: 100%;
+  padding: 30px;
+}
+
+.tis-panel {
+  background: linear-gradient(135deg, #07172f, #0b335d);
+  color: #d8f7ff;
+}
+
+.tis-panel h3 {
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.mini-card,
+.travel-item-simple {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  display: flex;
+  gap: 12px;
+  min-height: 76px;
+  padding: 14px;
+}
+
+.mini-card i,
+.travel-item-simple i {
+  color: #35e4ff;
+  font-size: 24px;
+  flex: 0 0 auto;
+}
+
+.travel-item-simple {
+  background: #f3f8fb;
+  color: #223041;
+}
+
+.info-card {
+  text-align: left;
+}
+
+.info-card i {
+  align-items: center;
+  background: #e9fbff;
+  border-radius: 8px;
+  color: #068ca0;
+  display: inline-flex;
+  font-size: 28px;
+  height: 56px;
+  justify-content: center;
+  margin-bottom: 18px;
+  width: 56px;
+}
+
+.info-card.compact {
+  padding: 24px;
+}
+
+.info-card.compact h4 {
+  font-size: 18px;
+}
+
+.committee-card .role {
+  color: #ff9f1c;
+  display: block;
+  font-family: var(--heading-font);
+  font-weight: 800;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.date-row {
+  align-items: flex-start;
+  border-bottom: 1px solid rgba(7, 23, 47, 0.1);
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  padding: 15px 0;
+}
+
+.date-row:first-of-type {
+  padding-top: 4px;
+}
+
+.date-row strong {
+  color: #068ca0;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.topic-card h4 {
+  color: #068ca0;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.topic-card ul {
+  margin-bottom: 0;
+  padding-left: 20px;
+}
+
+.submission-panel {
+  background: #07172f;
+  color: #d8f7ff;
+}
+
+.submission-panel h3 {
+  color: #ffffff;
+}
+
+.media-poster {
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(7, 23, 47, 0.18);
+}
+
+.footer .credits {
+  color: color-mix(in srgb, var(--default-color), transparent 35%);
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+@media (max-width: 1199px) {
+  .tis-page .btn-getstarted {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .tis-hero {
+    padding-top: 120px;
+  }
+
+  .tis-hero .hero-kicker {
+    font-size: 15px;
+  }
+
+  .date-row {
+    display: block;
+  }
+
+  .date-row strong {
+    display: block;
+    margin-top: 6px;
+    text-align: left;
+    white-space: normal;
+  }
+
+  .tis-panel,
+  .timeline-card,
+  .topic-card,
+  .submission-panel,
+  .committee-card,
+  .info-card {
+    padding: 22px;
+  }
+}
+
+@media (max-width: 991px) {
+  .tis-hero .row .col-lg-6:first-child {
+    order: 0;
+  }
+
+  .tis-hero .row .col-lg-6:last-child {
+    order: 1;
+  }
+}
+
+/* ── Announcement strip ─────────────────────────────── */
+.tis-announce {
+  background: linear-gradient(90deg, #07172f 0%, #0b2650 100%);
+  border-bottom: 2px solid rgba(53, 228, 255, 0.2);
+  padding: 13px 0;
+}
+
+.tis-announce .announce-content {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tis-announce .announce-badge {
+  background: #ff9f1c;
+  color: #07172f;
+  font-family: var(--heading-font);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  padding: 3px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.tis-announce .announce-text {
+  color: #88c8e0;
+  font-size: 14px;
+}
+
+.tis-announce .announce-text strong {
+  color: #35e4ff;
+  font-weight: 700;
+}
+
+.tis-btn-ghost {
+  border: 1px solid rgba(53, 228, 255, 0.4);
+  color: #35e4ff;
+  background: transparent;
+  font-size: .8125rem;
+  padding: .25rem .75rem;
+  border-radius: .375rem;
+  display: inline-block;
+  transition: background .2s;
+}
+
+.tis-btn-ghost:hover {
+  background: rgba(53, 228, 255, 0.12);
+  color: #35e4ff;
+  text-decoration: none;
+}
+
+@media (max-width: 991px) {
+  .tis-announce .col-lg-4 {
+    text-align: center !important;
+  }
+  .tis-announce .announce-content {
+    justify-content: center;
+  }
+}
+
+/* ── Countdown: glass tiles on dark hero ─────────────── */
+.tis-hero .countdown > div {
+  background: rgba(255, 255, 255, 0.07) !important;
+  border-color: rgba(53, 228, 255, 0.22) !important;
+  backdrop-filter: blur(6px);
+}
+
+.tis-hero .countdown > div h3 {
+  color: #35e4ff !important;
+  font-size: 2.25rem;
+}
+
+.tis-hero .countdown > div h4 {
+  color: rgba(216, 247, 255, 0.65) !important;
+}
+
+/* ── Committee cards ────────────────────────────────── */
+.committee-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.committee-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 28px 65px rgba(7, 23, 47, 0.14);
+}
+
+.committee-card .institution {
+  color: #068ca0;
+  font-size: 13px;
+  font-weight: 600;
+  margin: -2px 0 10px;
+}
+
+/* ── Info-card hover + link colour ──────────────────── */
+.info-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 55px rgba(7, 23, 47, 0.13);
+}
+
+.info-card a:not(.btn) {
+  color: #068ca0;
+  font-weight: 600;
+}
+
+.info-card a:not(.btn):hover {
+  color: #12bfd8;
+  text-decoration: underline;
+}
+
+/* ── Submission panels top accent ───────────────────── */
+.submission-panel {
+  border-top: 4px solid #35e4ff;
+}
+
+/* ── Session block left accent ──────────────────────── */
+.schedule .schedule-content .session-timeline .session-block .session-card {
+  border-left: 4px solid rgba(18, 191, 216, 0.4);
+}
+
+/* ── About section CTA banner ───────────────────────── */
+.tis-page .about .cta-section {
+  background: linear-gradient(135deg, #f0fbff, rgba(18, 191, 216, 0.07));
+  border-color: rgba(18, 191, 216, 0.2);
+}
+
+.tis-page .about .cta-section h3 {
+  color: #07172f;
+}
+
+.tis-page .about .cta-section .btn-outline {
+  border: 2px solid #068ca0;
+  color: #068ca0;
+  background: transparent;
+  padding: .75rem 1.5rem;
+  border-radius: .375rem;
+  font-weight: 600;
+  transition: background .2s, color .2s;
+}
+
+.tis-page .about .cta-section .btn-outline:hover {
+  background: #068ca0;
+  color: #fff;
+}
+
+/* ── Committee avatar circles ────────────────────────── */
+.committee-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #068ca0, #12bfd8);
+  color: #ffffff;
+  font-family: var(--heading-font);
+  font-size: 17px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  letter-spacing: 0.5px;
+}
+
+.committee-avatar.tba {
+  background: linear-gradient(135deg, #8ca0b0, #aebdcc);
+  font-size: 13px;
+}
+
+/* ── Committee card top accent ───────────────────────── */
+.committee-card {
+  border-top: 4px solid #12bfd8;
+}
+
+/* ── Feature cards (About) ───────────────────────────── */
+.about .feature-card {
+  border-top: 3px solid #12bfd8;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.about .feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(7, 23, 47, 0.12);
+}
+
+.about .feature-card .feature-icon {
+  color: #068ca0;
+}
+
+/* ── Technical Committee member list ─────────────────── */
+.tc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tc-list li {
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(7, 23, 47, 0.08);
+  font-size: 14px;
+  color: #223041;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.tc-list li::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  min-width: 6px;
+  border-radius: 50%;
+  background: #12bfd8;
+  margin-top: 2px;
+}
+
+.tc-list li:last-child {
+  border-bottom: none;
+}
+
+/* ── Stats grid accent ───────────────────────────────── */
+.about .stats-grid .stat-number {
+  color: #068ca0;
+}
+
+/* ── Section title descriptions – centered, max-width ── */
+.section-title p {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Timeline card left accent bar ──────────────────── */
+.timeline-card {
+  border-left: 4px solid #12bfd8;
+}
+
+/* ── Topic card heading teal dot ─────────────────────── */
+.topic-card h4::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #12bfd8;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* ── Travel items teal icon ──────────────────────────── */
+.travel-item-simple i {
+  color: #068ca0;
+}
+
+/* ── Mini-card text ──────────────────────────────────── */
+.mini-card span {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* ── Submission panel paired layout gap ─────────────── */
+.submission-panel + .submission-panel {
+  margin-top: 0;
+}
+
+/* ── Program tab active accent ───────────────────────── */
+.schedule .schedule-header .nav-tabs .nav-link.active {
+  border-bottom-color: #12bfd8;
+  color: #068ca0;
+  font-weight: 700;
+}
