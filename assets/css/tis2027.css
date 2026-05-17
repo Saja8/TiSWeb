@@ -1,30 +1,60 @@
 :root {
-  --background-color: #ffffff;
+  --background-color: #f4f8fb;
   --default-color: #223041;
   --heading-color: #07172f;
   --accent-color: #12bfd8;
   --surface-color: #ffffff;
   --contrast-color: #ffffff;
-  --nav-color: #0b1b33;
+  --nav-color: #e8fbff;
   --nav-hover-color: #12bfd8;
+  --nav-dropdown-color: #223041;
+  --nav-dropdown-background-color: #ffffff;
   --nav-dropdown-hover-color: #12bfd8;
 }
 
 .tis-page {
-  background: #ffffff;
+  background: #f4f8fb;
   overflow-x: hidden;
 }
 
+.tis-page section {
+  scroll-margin-top: 116px;
+}
+
 .tis-page .header .header-container {
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 10px 30px rgba(7, 23, 47, 0.12);
+  background: rgba(7, 23, 47, 0.92);
+  border: 1px solid rgba(53, 228, 255, 0.18);
+  box-shadow: 0 18px 44px rgba(7, 23, 47, 0.24);
+  backdrop-filter: blur(14px);
 }
 
 .tis-page .header .logo {
-  background: #07172f;
+  background: rgba(53, 228, 255, 0.12);
+  border: 1px solid rgba(53, 228, 255, 0.28);
   gap: 10px;
   padding: 6px 12px 6px 8px;
   border-radius: 6px;
+}
+
+.tis-page .navmenu a,
+.tis-page .navmenu a:focus {
+  color: #e8fbff;
+  font-weight: 600;
+}
+
+.tis-page .navmenu li:hover > a,
+.tis-page .navmenu .active,
+.tis-page .navmenu .active:focus {
+  color: #35e4ff;
+}
+
+.tis-page .navmenu .dropdown ul a,
+.tis-page .navmenu .dropdown ul a:focus {
+  color: #223041;
+}
+
+.tis-page .mobile-nav-toggle {
+  color: #e8fbff;
 }
 
 .logo-symbol,
@@ -109,7 +139,7 @@
 }
 
 .tis-hero::after {
-  background: linear-gradient(90deg, rgba(7, 23, 47, 0.97) 0%, rgba(7, 23, 47, 0.9) 40%, rgba(7, 23, 47, 0.36) 66%, rgba(7, 23, 47, 0.46) 100%), linear-gradient(180deg, rgba(7, 23, 47, 0.2), rgba(7, 23, 47, 0.88));
+  background: linear-gradient(90deg, rgba(7, 23, 47, 0.84) 0%, rgba(7, 23, 47, 0.78) 38%, rgba(7, 23, 47, 0.2) 64%, rgba(7, 23, 47, 0.38) 100%), linear-gradient(180deg, rgba(7, 23, 47, 0.08), rgba(7, 23, 47, 0.84));
   content: "";
   inset: 0;
   pointer-events: none;
@@ -119,18 +149,18 @@
 
 .tis-hero > .container {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .hero-satellite-art {
   max-width: none;
-  opacity: 0.92;
+  opacity: 1;
   pointer-events: none;
   position: absolute;
-  right: 22px;
-  top: 142px;
-  width: min(72vw, 980px);
-  z-index: 0;
+  left: 24px;
+  top: 116px;
+  width: min(88vw, 1160px);
+  z-index: 1;
 }
 
 .tis-hero .hero-kicker {
@@ -228,13 +258,13 @@
     width: 100%;
   }
   .tis-hero::after {
-    background: linear-gradient(180deg, rgba(7, 23, 47, 0.76) 0%, rgba(7, 23, 47, 0.93) 42%, rgba(7, 23, 47, 0.88) 100%);
+    background: linear-gradient(180deg, rgba(7, 23, 47, 0.58) 0%, rgba(7, 23, 47, 0.88) 36%, rgba(7, 23, 47, 0.9) 100%), linear-gradient(90deg, rgba(7, 23, 47, 0.72) 0%, rgba(7, 23, 47, 0.22) 100%);
   }
   .hero-satellite-art {
-    opacity: 0.72;
-    right: 20px;
-    top: 70px;
-    width: 620px;
+    left: 6px;
+    opacity: 0.95;
+    top: 82px;
+    width: 680px;
   }
 }
 .tis-panel,
@@ -252,19 +282,21 @@
 }
 
 .tis-panel {
-  background: linear-gradient(135deg, #07172f, #0b335d);
-  color: #d8f7ff;
+  background: linear-gradient(135deg, #ffffff 0%, #edf9fc 100%);
+  border-color: rgba(18, 191, 216, 0.2);
+  color: #223041;
 }
 
 .tis-panel h3 {
-  color: #ffffff;
+  color: #07172f;
   margin-bottom: 16px;
 }
 
 .mini-card,
 .travel-item-simple {
   align-items: center;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(18, 191, 216, 0.16);
   border-radius: 8px;
   display: flex;
   gap: 12px;
@@ -375,12 +407,13 @@
 }
 
 .submission-panel {
-  background: #07172f;
-  color: #d8f7ff;
+  background: linear-gradient(135deg, #ffffff 0%, #edf9fc 100%);
+  border-color: rgba(18, 191, 216, 0.2);
+  color: #223041;
 }
 
 .submission-panel h3 {
-  color: #ffffff;
+  color: #07172f;
 }
 
 .media-poster {
@@ -389,17 +422,17 @@
 }
 
 .conference-focus {
-  background: radial-gradient(circle at 92% 12%, rgba(53, 228, 255, 0.15), transparent 28%), linear-gradient(135deg, #07172f, #0b2b52);
+  background: radial-gradient(circle at 96% 10%, rgba(53, 228, 255, 0.18), transparent 32%), linear-gradient(135deg, #ffffff 0%, #edf9fc 100%);
   border: 1px solid rgba(18, 191, 216, 0.22);
   border-radius: 8px;
-  box-shadow: 0 22px 60px rgba(7, 23, 47, 0.14);
-  color: #d8f7ff;
+  box-shadow: 0 18px 50px rgba(7, 23, 47, 0.08);
+  color: #223041;
   margin-top: 34px;
   padding: clamp(24px, 4vw, 38px);
 }
 
 .focus-heading {
-  border-bottom: 1px solid rgba(216, 247, 255, 0.16);
+  border-bottom: 1px solid rgba(7, 23, 47, 0.1);
   margin-bottom: 22px;
   padding-bottom: 18px;
 }
@@ -416,7 +449,7 @@
 }
 
 .focus-heading h3 {
-  color: #ffffff;
+  color: #07172f;
   font-size: clamp(1.35rem, 2vw, 2rem);
   margin: 0;
 }
@@ -436,10 +469,10 @@
 
 .focus-item i {
   align-items: center;
-  background: rgba(53, 228, 255, 0.12);
-  border: 1px solid rgba(53, 228, 255, 0.26);
+  background: #dff8fd;
+  border: 1px solid rgba(18, 191, 216, 0.25);
   border-radius: 8px;
-  color: #35e4ff;
+  color: #068ca0;
   display: inline-flex;
   flex: 0 0 auto;
   font-size: 22px;
@@ -449,13 +482,13 @@
 }
 
 .focus-item h4 {
-  color: #ffffff;
+  color: #07172f;
   font-size: 1rem;
   margin: 0 0 5px;
 }
 
 .focus-item p {
-  color: #b9deea;
+  color: #42556b;
   line-height: 1.45;
   margin: 0;
 }
