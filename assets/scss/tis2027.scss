@@ -1430,3 +1430,71 @@ $mid:            0.25s $ease;
   .chair-avatar-wrap { width: 72px; height: 72px; }
   .chair-initials { font-size: 22px; }
 }
+
+
+// ── Compact footer redesign ────────────────────────────────────
+
+.footer {
+  .footer-top {
+    padding-top: 32px;
+    padding-bottom: 20px;
+  }
+
+  .footer-tagline {
+    color: $grey-muted;
+    font-size: 12px;
+    line-height: 1.55;
+    margin-bottom: 8px;
+  }
+
+  .footer-contact-item {
+    color: $grey-muted;
+    font-size: 12px;
+    margin-bottom: 0;
+
+    i { color: $teal; margin-right: 4px; font-size: 11px; }
+    a { color: $teal; }
+    a:hover { color: $navy; }
+  }
+
+  .footer-links {
+    h4 {
+      color: $navy;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        color: $grey-muted;
+        font-size: 12px;
+        line-height: 1;
+        margin-bottom: 7px;
+
+        a {
+          color: $grey-muted;
+          transition: color $fast;
+          &:hover { color: $teal; }
+        }
+
+        strong { color: $grey-text; }
+      }
+    }
+  }
+
+  .copyright {
+    border-top: 1px solid $grey-border;
+    font-size: 12px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+
+    p { margin-bottom: 0; color: $grey-muted; }
+  }
+}
