@@ -1471,14 +1471,14 @@ body.tis-page .footer {
   .sitename { color: $white !important; }
 
   .footer-tagline {
-    color: rgba($white, 0.55);
+    color: rgba($white, 0.72);
     font-size: 12px;
     line-height: 1.5;
     margin-bottom: 6px;
   }
 
   .footer-contact-item {
-    color: rgba($white, 0.55);
+    color: rgba($white, 0.72);
     font-size: 12px;
     margin-bottom: 0;
     i { color: $teal-glow; margin-right: 4px; font-size: 11px; }
@@ -1505,6 +1505,7 @@ body.tis-page .footer {
       padding: 0;
 
       li {
+        color: rgba($white, 0.75);
         font-size: 12px;
         line-height: 1.2;
         margin-bottom: 0;
@@ -1513,14 +1514,14 @@ body.tis-page .footer {
         &:first-child { padding-top: 0 !important; }
 
         a {
-          color: rgba($white, 0.60);
+          color: rgba($white, 0.75);
           font-size: 12px;
           line-height: 1;
           transition: color $fast;
           &:hover { color: $teal-glow; }
         }
 
-        strong { color: rgba($white, 0.85); font-size: 12px; }
+        strong { color: $white; font-size: 12px; }
       }
     }
   }

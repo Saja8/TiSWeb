@@ -1380,13 +1380,13 @@ body.tis-page .footer {
   color: #ffffff !important;
 }
 .footer .footer-tagline {
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.72);
   font-size: 12px;
   line-height: 1.5;
   margin-bottom: 6px;
 }
 .footer .footer-contact-item {
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.72);
   font-size: 12px;
   margin-bottom: 0;
 }
@@ -1419,6 +1419,7 @@ body.tis-page .footer {
   padding: 0;
 }
 .footer .footer-links ul li {
+  color: rgba(255, 255, 255, 0.75);
   font-size: 12px;
   line-height: 1.2;
   margin-bottom: 0;
@@ -1428,7 +1429,7 @@ body.tis-page .footer {
   padding-top: 0 !important;
 }
 .footer .footer-links ul li a {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.75);
   font-size: 12px;
   line-height: 1;
   transition: color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1437,7 +1438,7 @@ body.tis-page .footer {
   color: #00c8dc;
 }
 .footer .footer-links ul li strong {
-  color: rgba(255, 255, 255, 0.85);
+  color: #ffffff;
   font-size: 12px;
 }
 .footer .copyright {
