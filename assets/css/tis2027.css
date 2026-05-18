@@ -1264,3 +1264,85 @@
     height: 160px;
   }
 }
+.section-alt {
+  background: #f7fbfc;
+}
+
+.section-photos {
+  background: #ffffff;
+  padding-bottom: 60px;
+}
+
+.chair-avatar-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1a3a6b 0%, #0097a8 100%);
+  margin: 0 auto 14px;
+}
+
+.chair-initials {
+  color: #ffffff;
+  font-family: "Rubik", "Kanit", sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.chair-name {
+  color: #1a3a6b;
+  font-family: "Rubik", "Kanit", sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.chair-title {
+  color: #6b7280;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+.discover-photo {
+  border-radius: 4px;
+  display: block;
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.discover-photo:hover {
+  box-shadow: 0 6px 20px rgba(7, 17, 42, 0.12);
+  transform: scale(1.02);
+}
+
+.venue-thumb-tall {
+  height: 190px;
+}
+
+.venue-thumb-half {
+  height: 91px;
+}
+
+@media (max-width: 767px) {
+  .discover-photo {
+    height: 160px;
+  }
+  .venue-thumb-tall {
+    height: 160px;
+  }
+  .venue-thumb-half {
+    height: 76px;
+  }
+  .chair-avatar-wrap {
+    width: 72px;
+    height: 72px;
+  }
+  .chair-initials {
+    font-size: 22px;
+  }
+}
