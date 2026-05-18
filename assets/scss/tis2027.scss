@@ -1435,35 +1435,44 @@ $mid:            0.25s $ease;
 // ── Compact footer redesign ────────────────────────────────────
 
 .footer {
+  font-size: 12px;
+
+  // Override main.css padding-top: 50px
   .footer-top {
-    padding-top: 32px;
-    padding-bottom: 20px;
+    padding-top: 24px !important;
+    padding-bottom: 16px;
+    border-top: 1px solid $grey-border;
   }
+
+  // Override main.css .footer-about .logo { margin-bottom: 25px }
+  .footer-about .logo { margin-bottom: 6px !important; }
 
   .footer-tagline {
     color: $grey-muted;
     font-size: 12px;
-    line-height: 1.55;
-    margin-bottom: 8px;
+    line-height: 1.5;
+    margin-bottom: 6px;
   }
 
   .footer-contact-item {
     color: $grey-muted;
     font-size: 12px;
     margin-bottom: 0;
-
     i { color: $teal; margin-right: 4px; font-size: 11px; }
     a { color: $teal; }
     a:hover { color: $navy; }
   }
 
   .footer-links {
+    margin-bottom: 0 !important;   // override main.css margin-bottom: 30px
+
     h4 {
       color: $navy;
-      font-size: 13px;
+      font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.4px;
-      margin-bottom: 10px;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      padding-bottom: 0 !important;  // override main.css padding-bottom: 12px
       text-transform: uppercase;
     }
 
@@ -1472,29 +1481,34 @@ $mid:            0.25s $ease;
       margin: 0;
       padding: 0;
 
+      // Override main.css: padding: 10px 0 — that's what makes each row 20px+ tall
       li {
         color: $grey-muted;
         font-size: 12px;
-        line-height: 1;
-        margin-bottom: 7px;
+        line-height: 1.2;
+        margin-bottom: 0;
+        padding: 2px 0 !important;  // override main.css padding: 10px 0
+
+        &:first-child { padding-top: 0 !important; }
 
         a {
           color: $grey-muted;
+          font-size: 12px;
+          line-height: 1;
           transition: color $fast;
           &:hover { color: $teal; }
         }
 
-        strong { color: $grey-text; }
+        strong { color: $grey-text; font-size: 12px; }
       }
     }
   }
 
+  // Override main.css copyright padding: 25px 0
   .copyright {
     border-top: 1px solid $grey-border;
-    font-size: 12px;
-    padding-top: 14px;
-    padding-bottom: 14px;
-
+    font-size: 11px;
+    padding: 10px 0 !important;
     p { margin-bottom: 0; color: $grey-muted; }
   }
 }
