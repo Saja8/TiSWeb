@@ -142,6 +142,7 @@ $mid:            0.25s $ease;
 
   &:not(.scrolled) .logo-mark { color: $white; }
   &:not(.scrolled) .header .logo h1 { color: $teal-glow; }
+  &:not(.scrolled) .mobile-nav-toggle { color: rgba($white, 0.86); }
 
   // Once scrolled: reuse the solid white style
   &.scrolled .header .header-container {
@@ -159,9 +160,51 @@ $mid:            0.25s $ease;
 .logo-mark {
   color: $navy;
   font-family: $font-heading;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 800;
   line-height: 1;
+}
+
+@media (max-width: 1199px) {
+  .tis-page.mobile-nav-active {
+    .navmenu {
+      background: rgba($space, 0.86);
+      bottom: 0 !important;
+      height: 100dvh !important;
+      left: 0 !important;
+      overflow: hidden;
+      position: fixed !important;
+      right: 0 !important;
+      top: 0 !important;
+      width: 100vw !important;
+      z-index: 9997 !important;
+
+      > ul {
+        background: $white;
+        border: 1px solid rgba($teal, 0.18);
+        border-radius: $radius-lg;
+        box-shadow: $shadow-xl;
+        display: block;
+        height: calc(100dvh - 106px) !important;
+        inset: 82px 20px 24px 20px !important;
+        max-height: calc(100dvh - 106px) !important;
+        overflow-y: auto;
+        padding: 8px 0;
+        position: fixed !important;
+      }
+    }
+
+    .header .navmenu a,
+    .header .navmenu a:focus {
+      color: $navy;
+    }
+
+    .header .navmenu a:hover,
+    .header .navmenu .active,
+    .header .navmenu .active:focus {
+      color: $teal;
+    }
+  }
 }
 
 
@@ -236,60 +279,71 @@ $mid:            0.25s $ease;
   align-items: center;
   color: $white;
   display: flex;
-  min-height: 92vh;
+  min-height: clamp(680px, 78vh, 820px);
   overflow: hidden;
-  padding-top: 130px;
-  padding-bottom: 80px;
+  padding-top: 124px;
+  padding-bottom: 72px;
   position: relative;
 
-  // Satellite PNG at ~half cover size, anchored right; gradient darkens left text zone
+  // Keep the satellite art as a stable decorative background layer.
   background:
     linear-gradient(
-      105deg,
-      rgba($space, 0.98)  0%,
-      rgba($space, 0.96) 32%,
-      rgba($space, 0.82) 55%,
-      rgba($space, 0.45) 72%,
-      rgba($space, 0.12) 100%
+      90deg,
+      rgba($space, 0.68) 0%,
+      rgba($space, 0.72) 42%,
+      rgba($space, 0.94) 66%,
+      rgba($space, 0.98) 100%
     ),
-    url("../img/tis/tethered-satellite-hero.png") right center / auto 55% no-repeat,
     $space;
 
-  // Fine grid overlay for spatial depth
+  // Satellite/tether artwork. Anchored to the left so it stays predictable while scaling.
   &::before {
-    background-image:
-      linear-gradient(rgba($white, 0.022) 1px, transparent 1px),
-      linear-gradient(90deg, rgba($white, 0.022) 1px, transparent 1px);
-    background-size: 44px 44px;
+    background: url("../img/tis/tethered-satellite-hero.png") left center / contain no-repeat;
     content: '';
-    inset: 0;
+    inset: 142px auto 92px 0;
+    opacity: 0.3;
     pointer-events: none;
     position: absolute;
+    width: min(44vw, 860px);
+    z-index: 0;
   }
 
-  // Teal radial glow in the upper right — echoes the satellite area
+  // Fine grid overlay plus teal glow for spatial depth.
   &::after {
-    background: radial-gradient(
-      ellipse at 78% 30%,
-      rgba($teal-glow, 0.14) 0%,
-      rgba($teal, 0.05) 38%,
-      transparent 65%
-    );
+    background-image:
+      radial-gradient(ellipse at 20% 34%, rgba($teal-glow, 0.14) 0%, rgba($teal, 0.05) 35%, transparent 63%),
+      linear-gradient(rgba($white, 0.022) 1px, transparent 1px),
+      linear-gradient(90deg, rgba($white, 0.022) 1px, transparent 1px);
+    background-size: auto, 44px 44px, 44px 44px;
     content: '';
     inset: 0;
     pointer-events: none;
     position: absolute;
+    z-index: 1;
   }
 
   > .container {
+    max-width: min(1480px, calc(100% - 96px));
     position: relative;
     z-index: 2;
+  }
+
+  .row {
+    justify-content: flex-end;
+  }
+
+  .col-lg-7 {
+    flex: 0 0 min(900px, 58vw);
+    margin-left: auto;
+    margin-right: clamp(0px, 3vw, 64px);
+    max-width: 900px;
+    width: min(900px, 58vw);
   }
 
   .hero-kicker {
     color: color.adjust($sky, $lightness: 8%);
     font-family: $font-heading;
-    font-size: 11px;
+    font-size: clamp(10px, 0.72vw, 13px);
     font-weight: 700;
     letter-spacing: 2.5px;
     margin-bottom: 16px;
@@ -298,7 +352,7 @@ $mid:            0.25s $ease;
 
   .hero-title {
     color: $white;
-    font-size: clamp(2.2rem, 4vw, 3rem);
+    font-size: clamp(2.55rem, 3.7vw, 4.2rem);
     font-weight: 800;
     line-height: 1.08;
     margin-bottom: 14px;
@@ -307,10 +361,10 @@ $mid:            0.25s $ease;
 
   .hero-subtitle {
     color: rgba($white, 0.62);
-    font-size: 1rem;
+    font-size: clamp(1rem, 1.15vw, 1.25rem);
     line-height: 1.7;
     margin-bottom: 0;
-    max-width: 400px;
+    max-width: 650px;
   }
 
   .countdown-wrapper { display: none; }
@@ -844,12 +898,25 @@ $mid:            0.25s $ease;
 // ── 21. Program schedule ──────────────────────────────────────
 
 .schedule {
+  .schedule-header {
+    margin-bottom: 0;
+  }
+
+  .schedule-header .nav-tabs {
+    border-bottom: 2px solid $grey-border;
+    box-shadow: none;
+    gap: 2px;
+    justify-content: flex-start;
+    margin-bottom: 0;
+  }
+
   .nav-tabs {
     border-bottom: 2px solid $grey-border;
     gap: 2px;
   }
 
   // Override Bootstrap's filled active-tab style with an underline-only approach
+  .schedule-header .nav-tabs .nav-item .nav-link,
   .nav-tabs .nav-link {
     background-color: transparent !important;
     border: none !important;
@@ -877,10 +944,19 @@ $mid:            0.25s $ease;
       border-left: none !important;
       border-right: none !important;
       box-shadow: none !important;
-      color: $navy;
+      color: $navy !important;
       font-weight: 700;
       outline: none;
+      transform: none !important;
     }
+  }
+
+  .schedule-header .nav-tabs .nav-item .nav-link.active {
+    background-color: transparent !important;
+    border-bottom: 2px solid $teal !important;
+    box-shadow: none !important;
+    color: $navy !important;
+    transform: none !important;
   }
 }
 
@@ -946,6 +1022,40 @@ $mid:            0.25s $ease;
   width: 100%;
 
   &:hover { box-shadow: $shadow-xl; transform: scale(1.015); }
+}
+
+.body-small {
+  font-size: 14px;
+}
+
+.media-caption {
+  color: $grey-subtle;
+  font-size: 12px;
+  text-align: center;
+}
+
+.muted-small {
+  color: $grey-muted;
+  font-size: 13px;
+}
+
+.detail-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    border-bottom: 1px solid $grey-light;
+    color: $grey-text;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 8px 0;
+
+    &:first-child { padding-top: 0; }
+    &:last-child { border-bottom: none; padding-bottom: 0; }
+  }
+
+  strong { color: $navy; }
 }
 
 
@@ -1051,28 +1161,63 @@ $mid:            0.25s $ease;
     .col-lg-4 { text-align: center !important; }
     .announce-content { justify-content: center; }
   }
-
-  .schedule .nav-tabs { flex-wrap: wrap; }
 }
 
 @media (max-width: 767px) {
   .tis-hero {
-    min-height: 100svh;
-    padding-bottom: 48px;
-    padding-top: 96px;
+    align-items: flex-start;
+    min-height: auto;
+    padding-bottom: 64px;
+    padding-top: 180px;
 
-    // On mobile: satellite smaller, centred, overlaid heavily so text is readable
     background:
       linear-gradient(
-        180deg,
+        90deg,
         rgba($space, 0.97) 0%,
-        rgba($space, 0.88) 55%,
-        rgba($space, 0.65) 100%
+        rgba($space, 0.9) 45%,
+        rgba($space, 0.98) 100%
       ),
-      url("../img/tis/tethered-satellite-hero.png") 70% center / auto 38% no-repeat,
       $space;
 
+    &::before {
+      inset: 86px auto auto 0;
+      height: 285px;
+      opacity: 0.18;
+      width: min(106vw, 620px);
+    }
+
+    .col-lg-7 {
+      flex: 0 0 100%;
+      margin-right: 0;
+      max-width: 100%;
+      width: 100%;
+    }
+
     .hero-kicker { font-size: 10px; letter-spacing: 2px; }
+    .hero-title { font-size: clamp(2rem, 10vw, 2.45rem); }
+  }
+
+  .schedule .schedule-header {
+    overflow: visible;
+    padding-bottom: 0;
+  }
+
+  .schedule .schedule-header .nav-tabs {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    min-width: 0;
+  }
+
+  .schedule .schedule-header .nav-tabs .nav-item {
+    flex: 1 1 100%;
+  }
+
+  .schedule .schedule-header .nav-tabs .nav-item .nav-link,
+  .schedule .nav-tabs .nav-link {
+    font-size: 13px;
+    padding: 10px 14px !important;
+    text-align: left;
+    width: 100%;
   }
 
   .date-row {

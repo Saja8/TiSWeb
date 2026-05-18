@@ -44,6 +44,9 @@
 .index-page:not(.scrolled) .header .logo h1 {
   color: #00c8dc;
 }
+.index-page:not(.scrolled) .mobile-nav-toggle {
+  color: rgba(255, 255, 255, 0.86);
+}
 .index-page.scrolled .header .header-container {
   background: #ffffff;
   border-bottom: 2px solid #1a3a6b;
@@ -63,11 +66,47 @@
 .logo-mark {
   color: #1a3a6b;
   font-family: "Rubik", "Kanit", sans-serif;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 800;
   line-height: 1;
 }
 
+@media (max-width: 1199px) {
+  .tis-page.mobile-nav-active .navmenu {
+    background: rgba(7, 17, 42, 0.86);
+    bottom: 0 !important;
+    height: 100dvh !important;
+    left: 0 !important;
+    overflow: hidden;
+    position: fixed !important;
+    right: 0 !important;
+    top: 0 !important;
+    width: 100vw !important;
+    z-index: 9997 !important;
+  }
+  .tis-page.mobile-nav-active .navmenu > ul {
+    background: #ffffff;
+    border: 1px solid rgba(0, 151, 168, 0.18);
+    border-radius: 10px;
+    box-shadow: 0 28px 72px rgba(7, 17, 42, 0.24);
+    display: block;
+    height: calc(100dvh - 106px) !important;
+    inset: 82px 20px 24px 20px !important;
+    max-height: calc(100dvh - 106px) !important;
+    overflow-y: auto;
+    padding: 8px 0;
+    position: fixed !important;
+  }
+  .tis-page.mobile-nav-active .header .navmenu a,
+  .tis-page.mobile-nav-active .header .navmenu a:focus {
+    color: #1a3a6b;
+  }
+  .tis-page.mobile-nav-active .header .navmenu a:hover,
+  .tis-page.mobile-nav-active .header .navmenu .active,
+  .tis-page.mobile-nav-active .header .navmenu .active:focus {
+    color: #0097a8;
+  }
+}
 .tis-page .btn-getstarted,
 .tis-page .btn-primary {
   background: #1a3a6b;
@@ -132,36 +171,51 @@
   align-items: center;
   color: #ffffff;
   display: flex;
-  min-height: 92vh;
+  min-height: clamp(680px, 78vh, 820px);
   overflow: hidden;
-  padding-top: 130px;
-  padding-bottom: 80px;
+  padding-top: 124px;
+  padding-bottom: 72px;
   position: relative;
-  background: linear-gradient(105deg, rgba(7, 17, 42, 0.98) 0%, rgba(7, 17, 42, 0.96) 32%, rgba(7, 17, 42, 0.82) 55%, rgba(7, 17, 42, 0.45) 72%, rgba(7, 17, 42, 0.12) 100%), url("../img/tis/tethered-satellite-hero.png") right center/auto 55% no-repeat, #07112a;
+  background: linear-gradient(90deg, rgba(7, 17, 42, 0.68) 0%, rgba(7, 17, 42, 0.72) 42%, rgba(7, 17, 42, 0.94) 66%, rgba(7, 17, 42, 0.98) 100%), #07112a;
 }
 .tis-hero::before {
-  background-image: linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
-  background-size: 44px 44px;
+  background: url("../img/tis/tethered-satellite-hero.png") left center/contain no-repeat;
   content: "";
-  inset: 0;
+  inset: 142px auto 92px 0;
+  opacity: 0.3;
   pointer-events: none;
   position: absolute;
+  width: min(44vw, 860px);
+  z-index: 0;
 }
 .tis-hero::after {
-  background: radial-gradient(ellipse at 78% 30%, rgba(0, 200, 220, 0.14) 0%, rgba(0, 151, 168, 0.05) 38%, transparent 65%);
+  background-image: radial-gradient(ellipse at 20% 34%, rgba(0, 200, 220, 0.14) 0%, rgba(0, 151, 168, 0.05) 35%, transparent 63%), linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+  background-size: auto, 44px 44px, 44px 44px;
   content: "";
   inset: 0;
   pointer-events: none;
   position: absolute;
+  z-index: 1;
 }
 .tis-hero > .container {
+  max-width: min(1480px, 100% - 96px);
   position: relative;
   z-index: 2;
+}
+.tis-hero .row {
+  justify-content: flex-end;
+}
+.tis-hero .col-lg-7 {
+  flex: 0 0 min(900px, 58vw);
+  margin-left: auto;
+  margin-right: clamp(0px, 3vw, 64px);
+  max-width: 900px;
+  width: min(900px, 58vw);
 }
 .tis-hero .hero-kicker {
   color: rgb(164.8796992481, 224.4977443609, 252.9203007519);
   font-family: "Rubik", "Kanit", sans-serif;
-  font-size: 11px;
+  font-size: clamp(10px, 0.72vw, 13px);
   font-weight: 700;
   letter-spacing: 2.5px;
   margin-bottom: 16px;
@@ -169,7 +223,7 @@
 }
 .tis-hero .hero-title {
   color: #ffffff;
-  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-size: clamp(2.55rem, 3.7vw, 4.2rem);
   font-weight: 800;
   line-height: 1.08;
   margin-bottom: 14px;
@@ -177,10 +231,10 @@
 }
 .tis-hero .hero-subtitle {
   color: rgba(255, 255, 255, 0.62);
-  font-size: 1rem;
+  font-size: clamp(1rem, 1.15vw, 1.25rem);
   line-height: 1.7;
   margin-bottom: 0;
-  max-width: 400px;
+  max-width: 650px;
 }
 .tis-hero .countdown-wrapper {
   display: none;
@@ -713,10 +767,21 @@
   margin: 0;
 }
 
+.schedule .schedule-header {
+  margin-bottom: 0;
+}
+.schedule .schedule-header .nav-tabs {
+  border-bottom: 2px solid #e2e8f0;
+  box-shadow: none;
+  gap: 2px;
+  justify-content: flex-start;
+  margin-bottom: 0;
+}
 .schedule .nav-tabs {
   border-bottom: 2px solid #e2e8f0;
   gap: 2px;
 }
+.schedule .schedule-header .nav-tabs .nav-item .nav-link,
 .schedule .nav-tabs .nav-link {
   background-color: transparent !important;
   border: none !important;
@@ -730,21 +795,32 @@
   transition: color 0.15s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
 }
+.schedule .schedule-header .nav-tabs .nav-item .nav-link:hover,
 .schedule .nav-tabs .nav-link:hover {
   background-color: transparent !important;
   border-bottom-color: #9ae5ed !important;
   color: #1a3a6b;
 }
-.schedule .nav-tabs .nav-link.active, .schedule .nav-tabs .nav-link:focus-visible {
+.schedule .schedule-header .nav-tabs .nav-item .nav-link.active, .schedule .schedule-header .nav-tabs .nav-item .nav-link:focus-visible,
+.schedule .nav-tabs .nav-link.active,
+.schedule .nav-tabs .nav-link:focus-visible {
   background-color: transparent !important;
   border-bottom: 2px solid #0097a8 !important;
   border-top: none !important;
   border-left: none !important;
   border-right: none !important;
   box-shadow: none !important;
-  color: #1a3a6b;
+  color: #1a3a6b !important;
   font-weight: 700;
   outline: none;
+  transform: none !important;
+}
+.schedule .schedule-header .nav-tabs .nav-item .nav-link.active {
+  background-color: transparent !important;
+  border-bottom: 2px solid #0097a8 !important;
+  box-shadow: none !important;
+  color: #1a3a6b !important;
+  transform: none !important;
 }
 
 .tab-content {
@@ -861,6 +937,44 @@
   transform: scale(1.015);
 }
 
+.body-small {
+  font-size: 14px;
+}
+
+.media-caption {
+  color: #9ca3af;
+  font-size: 12px;
+  text-align: center;
+}
+
+.muted-small {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.detail-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.detail-list li {
+  border-bottom: 1px solid #f0f5f8;
+  color: #374151;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 8px 0;
+}
+.detail-list li:first-child {
+  padding-top: 0;
+}
+.detail-list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.detail-list strong {
+  color: #1a3a6b;
+}
+
 .date-row {
   align-items: flex-start;
   border-bottom: 1px solid #e2e8f0;
@@ -960,20 +1074,52 @@
   .tis-announce .announce-content {
     justify-content: center;
   }
-  .schedule .nav-tabs {
-    flex-wrap: wrap;
-  }
 }
 @media (max-width: 767px) {
   .tis-hero {
-    min-height: 100svh;
-    padding-bottom: 48px;
-    padding-top: 96px;
-    background: linear-gradient(180deg, rgba(7, 17, 42, 0.97) 0%, rgba(7, 17, 42, 0.88) 55%, rgba(7, 17, 42, 0.65) 100%), url("../img/tis/tethered-satellite-hero.png") 70% center/auto 38% no-repeat, #07112a;
+    align-items: flex-start;
+    min-height: auto;
+    padding-bottom: 64px;
+    padding-top: 180px;
+    background: linear-gradient(90deg, rgba(7, 17, 42, 0.97) 0%, rgba(7, 17, 42, 0.9) 45%, rgba(7, 17, 42, 0.98) 100%), #07112a;
+  }
+  .tis-hero::before {
+    inset: 86px auto auto 0;
+    height: 285px;
+    opacity: 0.18;
+    width: min(106vw, 620px);
+  }
+  .tis-hero .col-lg-7 {
+    flex: 0 0 100%;
+    margin-right: 0;
+    max-width: 100%;
+    width: 100%;
   }
   .tis-hero .hero-kicker {
     font-size: 10px;
     letter-spacing: 2px;
+  }
+  .tis-hero .hero-title {
+    font-size: clamp(2rem, 10vw, 2.45rem);
+  }
+  .schedule .schedule-header {
+    overflow: visible;
+    padding-bottom: 0;
+  }
+  .schedule .schedule-header .nav-tabs {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    min-width: 0;
+  }
+  .schedule .schedule-header .nav-tabs .nav-item {
+    flex: 1 1 100%;
+  }
+  .schedule .schedule-header .nav-tabs .nav-item .nav-link,
+  .schedule .nav-tabs .nav-link {
+    font-size: 13px;
+    padding: 10px 14px !important;
+    text-align: left;
+    width: 100%;
   }
   .date-row {
     display: block;
