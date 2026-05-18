@@ -1250,3 +1250,103 @@ $mid:            0.25s $ease;
     padding-top: 0;
   }
 }
+
+
+// ── Photos — venue images and getting-here ─────────────────────
+
+.venue-thumb {
+  border-radius: $radius;
+  display: block;
+  height: 160px;
+  object-fit: cover;
+  transition: transform $mid, box-shadow $mid;
+  width: 100%;
+
+  &:hover {
+    box-shadow: $shadow-md;
+    transform: translateY(-2px);
+  }
+}
+
+.venue-photo-grid {
+  .photo-credit { color: $grey-subtle; font-size: 11px; margin-top: 4px; }
+}
+
+.venue-photo-full {
+  border-radius: $radius;
+  display: block;
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.photo-credit {
+  color: $grey-subtle;
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+.getting-here {
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+  overflow: hidden;
+  border: 1px solid $grey-border;
+}
+
+.getting-here-inner { min-height: 280px; }
+
+.getting-here-photo {
+  display: block;
+  height: 100%;
+  min-height: 280px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.getting-here-steps {
+  padding: 28px 32px;
+}
+
+.getting-here-heading {
+  color: $navy;
+  font-family: $font-heading;
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.step-row {
+  align-items: flex-start;
+  display: flex;
+  gap: 14px;
+  margin-bottom: 16px;
+
+  span:not(.step-badge) {
+    color: $grey-muted;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  strong { color: $grey-text; font-size: 14px; }
+}
+
+.step-badge {
+  align-items: center;
+  background: $navy;
+  border-radius: 50%;
+  color: $white;
+  display: flex;
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 700;
+  height: 26px;
+  justify-content: center;
+  margin-top: 1px;
+  width: 26px;
+}
+
+@media (max-width: 767px) {
+  .getting-here-photo { min-height: 200px; }
+  .getting-here-steps { padding: 20px; }
+  .venue-photo-full { height: 160px; }
+}
