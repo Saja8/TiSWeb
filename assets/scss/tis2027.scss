@@ -289,9 +289,9 @@ $mid:            0.25s $ease;
   background:
     linear-gradient(
       90deg,
-      rgba($space, 0.68) 0%,
-      rgba($space, 0.72) 42%,
-      rgba($space, 0.94) 66%,
+      rgba($space, 0.86) 0%,
+      rgba($space, 0.72) 46%,
+      rgba($space, 0.9) 72%,
       rgba($space, 0.98) 100%
     ),
     $space;
@@ -300,11 +300,11 @@ $mid:            0.25s $ease;
   &::before {
     background: url("../img/tis/tethered-satellite-hero.png") left center / contain no-repeat;
     content: '';
-    inset: 132px auto 78px clamp(80px, 18vw, 330px);
-    opacity: 0.58;
+    inset: 88px auto 150px clamp(0px, 7vw, 120px);
+    opacity: 0.56;
     pointer-events: none;
     position: absolute;
-    width: min(66vw, 1180px);
+    width: min(74vw, 1280px);
     z-index: 0;
   }
 
@@ -323,21 +323,21 @@ $mid:            0.25s $ease;
   }
 
   > .container {
-    max-width: min(1480px, calc(100% - 96px));
+    max-width: min(1720px, calc(100% - 96px));
     position: relative;
     z-index: 2;
   }
 
   .row {
-    justify-content: flex-end;
+    justify-content: flex-start;
   }
 
   .col-lg-7 {
-    flex: 0 0 min(900px, 58vw);
-    margin-left: auto;
-    margin-right: clamp(0px, 3vw, 64px);
+    flex: 0 0 min(900px, 62vw);
+    margin-left: 0;
+    margin-right: 0;
     max-width: 900px;
-    width: min(900px, 58vw);
+    width: min(900px, 62vw);
   }
 
   .hero-kicker {
@@ -352,7 +352,7 @@ $mid:            0.25s $ease;
 
   .hero-title {
     color: $white;
-    font-size: clamp(2.55rem, 3.7vw, 4.2rem);
+    font-size: clamp(2.55rem, 3.55vw, 4rem);
     font-weight: 800;
     line-height: 1.08;
     margin-bottom: 14px;
@@ -364,7 +364,7 @@ $mid:            0.25s $ease;
     font-size: clamp(1rem, 1.15vw, 1.25rem);
     line-height: 1.7;
     margin-bottom: 0;
-    max-width: 650px;
+    max-width: 620px;
   }
 
   .countdown-wrapper { display: none; }
@@ -372,9 +372,11 @@ $mid:            0.25s $ease;
 
 @media (min-width: 1800px) {
   .tis-hero::before {
-    left: 80px;
-    opacity: 0.55;
-    width: min(58vw, 1160px);
+    left: 0;
+    opacity: 0.54;
+    top: 96px;
+    bottom: 140px;
+    width: min(64vw, 1260px);
   }
 }
 
