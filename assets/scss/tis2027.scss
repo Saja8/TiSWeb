@@ -1432,47 +1432,67 @@ $mid:            0.25s $ease;
 }
 
 
-// ── Compact footer redesign ────────────────────────────────────
+// ── Sticky footer (no blank space on short pages) ─────────────
+
+body.tis-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+body.tis-page .main {
+  flex: 1 0 auto;
+}
+
+body.tis-page .footer {
+  flex-shrink: 0;
+}
+
+// ── Footer — dark navy with warm teal accents ──────────────────
 
 .footer {
   font-size: 12px;
 
-  // Override main.css padding-top: 50px
+  // Dark gradient background overriding .light-background
+  background: linear-gradient(160deg, $space 0%, $navy-deep 100%) !important;
+  --background-color: #{$space} !important;
+
   .footer-top {
-    padding-top: 24px !important;
-    padding-bottom: 16px;
-    border-top: 1px solid $grey-border;
+    padding-top: 28px !important;
+    padding-bottom: 20px;
+    border-top: none;
   }
 
-  // Override main.css .footer-about .logo { margin-bottom: 25px }
   .footer-about .logo { margin-bottom: 6px !important; }
 
+  .sitename { color: $white !important; }
+
   .footer-tagline {
-    color: $grey-muted;
+    color: rgba($white, 0.55);
     font-size: 12px;
     line-height: 1.5;
     margin-bottom: 6px;
   }
 
   .footer-contact-item {
-    color: $grey-muted;
+    color: rgba($white, 0.55);
     font-size: 12px;
     margin-bottom: 0;
-    i { color: $teal; margin-right: 4px; font-size: 11px; }
-    a { color: $teal; }
-    a:hover { color: $navy; }
+    i { color: $teal-glow; margin-right: 4px; font-size: 11px; }
+    a { color: $teal-glow; }
+    a:hover { color: $white; }
   }
 
   .footer-links {
-    margin-bottom: 0 !important;   // override main.css margin-bottom: 30px
+    margin-bottom: 0 !important;
 
     h4 {
-      color: $navy;
-      font-size: 11px;
+      color: $teal;
+      font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.5px;
+      letter-spacing: 1px;
       margin-bottom: 8px;
-      padding-bottom: 0 !important;  // override main.css padding-bottom: 12px
+      padding-bottom: 0 !important;
       text-transform: uppercase;
     }
 
@@ -1481,34 +1501,32 @@ $mid:            0.25s $ease;
       margin: 0;
       padding: 0;
 
-      // Override main.css: padding: 10px 0 — that's what makes each row 20px+ tall
       li {
-        color: $grey-muted;
         font-size: 12px;
         line-height: 1.2;
         margin-bottom: 0;
-        padding: 2px 0 !important;  // override main.css padding: 10px 0
+        padding: 3px 0 !important;
 
         &:first-child { padding-top: 0 !important; }
 
         a {
-          color: $grey-muted;
+          color: rgba($white, 0.60);
           font-size: 12px;
           line-height: 1;
           transition: color $fast;
-          &:hover { color: $teal; }
+          &:hover { color: $teal-glow; }
         }
 
-        strong { color: $grey-text; font-size: 12px; }
+        strong { color: rgba($white, 0.85); font-size: 12px; }
       }
     }
   }
 
-  // Override main.css copyright padding: 25px 0
   .copyright {
-    border-top: 1px solid $grey-border;
+    border-top: 1px solid rgba($teal, 0.18);
     font-size: 11px;
     padding: 10px 0 !important;
-    p { margin-bottom: 0; color: $grey-muted; }
+    p { margin-bottom: 0; color: rgba($white, 0.30); }
+    .sitename { color: rgba($white, 0.55) !important; }
   }
 }
