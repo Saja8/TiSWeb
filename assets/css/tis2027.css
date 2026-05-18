@@ -1346,6 +1346,10 @@
     font-size: 22px;
   }
 }
+html {
+  background-color: #07112a;
+}
+
 body.tis-page {
   display: flex;
   flex-direction: column;

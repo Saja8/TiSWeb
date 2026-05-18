@@ -1434,6 +1434,10 @@ $mid:            0.25s $ease;
 
 // ── Sticky footer (no blank space on short pages) ─────────────
 
+html {
+  background-color: $space;
+}
+
 body.tis-page {
   display: flex;
   flex-direction: column;
