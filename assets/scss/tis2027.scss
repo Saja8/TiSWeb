@@ -337,7 +337,19 @@ $mid:            0.25s $ease;
     margin-left: 0;
     margin-right: 0;
     max-width: 900px;
+    position: relative;
     width: min(900px, 62vw);
+
+    &::before {
+      background:
+        radial-gradient(ellipse at 8% 45%, rgba($space, 0.78) 0%, rgba($space, 0.56) 42%, transparent 76%),
+        linear-gradient(90deg, rgba($space, 0.6) 0%, rgba($space, 0.34) 54%, transparent 100%);
+      content: '';
+      inset: -42px -90px -38px -34px;
+      pointer-events: none;
+      position: absolute;
+      z-index: -1;
+    }
   }
 
   .hero-kicker {
@@ -699,6 +711,23 @@ $mid:            0.25s $ease;
   }
 
   .institution { color: $teal; font-size: 13px; font-weight: 600; margin: -2px 0 10px; }
+}
+
+.chair-profile {
+  align-items: center;
+  display: flex;
+  gap: 18px;
+}
+
+.committee-photo {
+  border: 3px solid $white;
+  border-radius: 50%;
+  box-shadow: 0 6px 18px rgba($navy, 0.18);
+  flex: 0 0 auto;
+  height: 92px;
+  object-fit: cover;
+  object-position: center 28%;
+  width: 92px;
 }
 
 .committee-avatar {
@@ -1200,6 +1229,10 @@ $mid:            0.25s $ease;
       margin-right: 0;
       max-width: 100%;
       width: 100%;
+
+      &::before {
+        inset: -26px -24px -26px -18px;
+      }
     }
 
     .hero-kicker { font-size: 10px; letter-spacing: 2px; }
@@ -1240,6 +1273,17 @@ $mid:            0.25s $ease;
   .submission-panel,
   .committee-card,
   .info-card { padding: 18px; }
+
+  .chair-profile {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .committee-photo {
+    height: 84px;
+    width: 84px;
+  }
 
   .session-block { flex-direction: column; gap: 8px; }
   .session-time {
@@ -1373,6 +1417,15 @@ $mid:            0.25s $ease;
   margin: 0 auto 14px;
 }
 
+.chair-photo {
+  border: 3px solid $white;
+  border-radius: 50%;
+  height: 96px;
+  object-fit: cover;
+  object-position: center 28%;
+  width: 96px;
+}
+
 .chair-initials {
   color: $white;
   font-family: $font-heading;
@@ -1427,6 +1480,7 @@ $mid:            0.25s $ease;
   .venue-thumb-tall { height: 160px; }
   .venue-thumb-half { height: 76px; }
   .chair-avatar-wrap { width: 72px; height: 72px; }
+  .chair-photo { width: 72px; height: 72px; }
   .chair-initials { font-size: 22px; }
 }
 
