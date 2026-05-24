@@ -1410,20 +1410,21 @@ $mid:            0.25s $ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 96px;
-  height: 96px;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
   background: linear-gradient(135deg, $navy 0%, $teal 100%);
-  margin: 0 auto 14px;
+  box-shadow: 0 12px 30px rgba($navy, 0.16);
+  margin: 0 auto 20px;
 }
 
 .chair-photo {
-  border: 3px solid $white;
+  border: 5px solid $white;
   border-radius: 50%;
-  height: 96px;
+  height: 220px;
   object-fit: cover;
   object-position: center 28%;
-  width: 96px;
+  width: 220px;
 }
 
 .chair-initials {
@@ -1479,8 +1480,8 @@ $mid:            0.25s $ease;
   .discover-photo { height: 160px; }
   .venue-thumb-tall { height: 160px; }
   .venue-thumb-half { height: 76px; }
-  .chair-avatar-wrap { width: 72px; height: 72px; }
-  .chair-photo { width: 72px; height: 72px; }
+  .chair-avatar-wrap { width: 144px; height: 144px; }
+  .chair-photo { width: 144px; height: 144px; }
   .chair-initials { font-size: 22px; }
 }
 

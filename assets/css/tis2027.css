@@ -1314,20 +1314,21 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 96px;
-  height: 96px;
+  width: 220px;
+  height: 220px;
   border-radius: 50%;
   background: linear-gradient(135deg, #1a3a6b 0%, #0097a8 100%);
-  margin: 0 auto 14px;
+  box-shadow: 0 12px 30px rgba(26, 58, 107, 0.16);
+  margin: 0 auto 20px;
 }
 
 .chair-photo {
-  border: 3px solid #ffffff;
+  border: 5px solid #ffffff;
   border-radius: 50%;
-  height: 96px;
+  height: 220px;
   object-fit: cover;
   object-position: center 28%;
-  width: 96px;
+  width: 220px;
 }
 
 .chair-initials {
@@ -1385,12 +1386,12 @@
     height: 76px;
   }
   .chair-avatar-wrap {
-    width: 72px;
-    height: 72px;
+    width: 144px;
+    height: 144px;
   }
   .chair-photo {
-    width: 72px;
-    height: 72px;
+    width: 144px;
+    height: 144px;
   }
   .chair-initials {
     font-size: 22px;
