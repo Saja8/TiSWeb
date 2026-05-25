@@ -801,163 +801,6 @@
   margin: 0;
 }
 
-.schedule .schedule-header {
-  margin-bottom: 0;
-}
-.schedule .schedule-header .nav-tabs {
-  border-bottom: 2px solid #e2e8f0;
-  box-shadow: none;
-  gap: 2px;
-  justify-content: flex-start;
-  margin-bottom: 0;
-}
-.schedule .nav-tabs {
-  border-bottom: 2px solid #e2e8f0;
-  gap: 2px;
-}
-.schedule .schedule-header .nav-tabs .nav-item .nav-link,
-.schedule .nav-tabs .nav-link {
-  background-color: transparent !important;
-  border: none !important;
-  border-bottom: 2px solid transparent !important;
-  border-radius: 0 !important;
-  color: #6b7280;
-  font-size: 14px;
-  font-weight: 500;
-  margin-bottom: -2px;
-  padding: 10px 20px;
-  transition: color 0.15s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-  white-space: nowrap;
-}
-.schedule .schedule-header .nav-tabs .nav-item .nav-link:hover,
-.schedule .nav-tabs .nav-link:hover {
-  background-color: transparent !important;
-  border-bottom-color: #9ae5ed !important;
-  color: #1a3a6b;
-}
-.schedule .schedule-header .nav-tabs .nav-item .nav-link.active, .schedule .schedule-header .nav-tabs .nav-item .nav-link:focus-visible,
-.schedule .nav-tabs .nav-link.active,
-.schedule .nav-tabs .nav-link:focus-visible {
-  background-color: transparent !important;
-  border-bottom: 2px solid #0097a8 !important;
-  border-top: none !important;
-  border-left: none !important;
-  border-right: none !important;
-  box-shadow: none !important;
-  color: #1a3a6b !important;
-  font-weight: 700;
-  outline: none;
-  transform: none !important;
-}
-.schedule .schedule-header .nav-tabs .nav-item .nav-link.active {
-  background-color: transparent !important;
-  border-bottom: 2px solid #0097a8 !important;
-  box-shadow: none !important;
-  color: #1a3a6b !important;
-  transform: none !important;
-}
-
-.tab-content {
-  padding-top: 22px;
-}
-
-.session-timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.session-block {
-  align-items: flex-start;
-  display: flex;
-  gap: 16px;
-}
-
-.session-time {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-  min-width: 52px;
-  padding-top: 14px;
-}
-.session-time .start {
-  color: #1a3a6b;
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 1;
-}
-.session-time .end {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  color: #9ca3af;
-  margin-top: 3px;
-}
-
-.session-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-left: 3px solid #0097a8;
-  border-radius: 4px;
-  flex: 1;
-  padding: 14px 20px;
-  transition: border-left-color 0.15s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.session-card:hover {
-  border-left-color: #1a3a6b;
-  box-shadow: 0 2px 8px rgba(7, 17, 42, 0.08);
-}
-
-.session-meta {
-  align-items: center;
-  display: flex;
-  gap: 8px;
-  margin-bottom: 7px;
-}
-
-.track {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.7px;
-  text-transform: uppercase;
-  border-radius: 4px;
-  padding: 3px 9px;
-}
-.track.keynote {
-  background: #e0f2fe;
-  color: #0369a1;
-}
-.track.development {
-  background: #dcfce7;
-  color: #15803d;
-}
-.track.business {
-  background: #f3e8ff;
-  color: #7e22ce;
-}
-
-.room {
-  color: #9ca3af;
-  font-size: 12px;
-  font-style: italic;
-}
-
-.session-title {
-  color: #1a3a6b;
-  font-size: 15px;
-  font-weight: 700;
-  margin: 0 0 5px;
-}
-
-.session-description {
-  color: #6b7280;
-  font-size: 13px;
-  line-height: 1.5;
-  margin: 0;
-}
-
 .media-poster {
   border: 1px solid #e2e8f0;
   border-radius: 4px;
@@ -1139,25 +982,6 @@
   .tis-hero .hero-title {
     font-size: clamp(2rem, 10vw, 2.45rem);
   }
-  .schedule .schedule-header {
-    overflow: visible;
-    padding-bottom: 0;
-  }
-  .schedule .schedule-header .nav-tabs {
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    min-width: 0;
-  }
-  .schedule .schedule-header .nav-tabs .nav-item {
-    flex: 1 1 100%;
-  }
-  .schedule .schedule-header .nav-tabs .nav-item .nav-link,
-  .schedule .nav-tabs .nav-link {
-    font-size: 13px;
-    padding: 10px 14px !important;
-    text-align: left;
-    width: 100%;
-  }
   .date-row {
     display: block;
   }
@@ -1183,16 +1007,6 @@
   .committee-photo {
     height: 84px;
     width: 84px;
-  }
-  .session-block {
-    flex-direction: column;
-    gap: 8px;
-  }
-  .session-time {
-    flex-direction: row;
-    gap: 6px;
-    min-width: unset;
-    padding-top: 0;
   }
 }
 .venue-thumb {

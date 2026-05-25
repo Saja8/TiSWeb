@@ -69,11 +69,6 @@ $mid:            0.25s $ease;
   }
 }
 
-@mixin track-chip($bg, $fg) {
-  background: $bg;
-  color: $fg;
-}
-
 @mixin teal-icon-box($size: 46px, $font: 22px) {
   align-items: center;
   border-radius: $radius;
@@ -933,123 +928,7 @@ $mid:            0.25s $ease;
 }
 
 
-// ── 21. Program schedule ──────────────────────────────────────
-
-.schedule {
-  .schedule-header {
-    margin-bottom: 0;
-  }
-
-  .schedule-header .nav-tabs {
-    border-bottom: 2px solid $grey-border;
-    box-shadow: none;
-    gap: 2px;
-    justify-content: flex-start;
-    margin-bottom: 0;
-  }
-
-  .nav-tabs {
-    border-bottom: 2px solid $grey-border;
-    gap: 2px;
-  }
-
-  // Override Bootstrap's filled active-tab style with an underline-only approach
-  .schedule-header .nav-tabs .nav-item .nav-link,
-  .nav-tabs .nav-link {
-    background-color: transparent !important;
-    border: none !important;
-    border-bottom: 2px solid transparent !important;
-    border-radius: 0 !important;
-    color: $grey-muted;
-    font-size: 14px;
-    font-weight: 500;
-    margin-bottom: -2px;
-    padding: 10px 20px;
-    transition: color $fast, border-color $fast;
-    white-space: nowrap;
-
-    &:hover {
-      background-color: transparent !important;
-      border-bottom-color: $teal-border !important;
-      color: $navy;
-    }
-
-    &.active,
-    &:focus-visible {
-      background-color: transparent !important;
-      border-bottom: 2px solid $teal !important;
-      border-top: none !important;
-      border-left: none !important;
-      border-right: none !important;
-      box-shadow: none !important;
-      color: $navy !important;
-      font-weight: 700;
-      outline: none;
-      transform: none !important;
-    }
-  }
-
-  .schedule-header .nav-tabs .nav-item .nav-link.active {
-    background-color: transparent !important;
-    border-bottom: 2px solid $teal !important;
-    box-shadow: none !important;
-    color: $navy !important;
-    transform: none !important;
-  }
-}
-
-.tab-content { padding-top: 22px; }
-
-.session-timeline { display: flex; flex-direction: column; gap: 16px; }
-
-.session-block { align-items: flex-start; display: flex; gap: 16px; }
-
-.session-time {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-  min-width: 52px;
-  padding-top: 14px;
-
-  .start { color: $navy; font-size: 15px; font-weight: 700; line-height: 1; }
-  .end   { @include upper-label(11px, 0.5px); color: $grey-subtle; margin-top: 3px; }
-}
-
-.session-card {
-  background: $white;
-  border: 1px solid $grey-border;
-  border-left: 3px solid $teal;
-  border-radius: $radius;
-  flex: 1;
-  padding: 14px 20px;
-  transition: border-left-color $fast, box-shadow $fast;
-
-  &:hover {
-    border-left-color: $navy;
-    box-shadow: $shadow-sm;
-  }
-}
-
-.session-meta { align-items: center; display: flex; gap: 8px; margin-bottom: 7px; }
-
-.track {
-  @include upper-label;
-  border-radius: $radius;
-  padding: 3px 9px;
-
-  &.keynote     { @include track-chip(#e0f2fe, #0369a1); }
-  &.development { @include track-chip(#dcfce7, #15803d); }
-  &.business    { @include track-chip(#f3e8ff, #7e22ce); }
-}
-
-.room { color: $grey-subtle; font-size: 12px; font-style: italic; }
-
-.session-title { color: $navy; font-size: 15px; font-weight: 700; margin: 0 0 5px; }
-.session-description { color: $grey-muted; font-size: 13px; line-height: 1.5; margin: 0; }
-
-
-// ── 22. Media poster ──────────────────────────────────────────
+// ── 21. Media poster ──────────────────────────────────────────
 
 .media-poster {
   border: 1px solid $grey-border;
@@ -1239,29 +1118,6 @@ $mid:            0.25s $ease;
     .hero-title { font-size: clamp(2rem, 10vw, 2.45rem); }
   }
 
-  .schedule .schedule-header {
-    overflow: visible;
-    padding-bottom: 0;
-  }
-
-  .schedule .schedule-header .nav-tabs {
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    min-width: 0;
-  }
-
-  .schedule .schedule-header .nav-tabs .nav-item {
-    flex: 1 1 100%;
-  }
-
-  .schedule .schedule-header .nav-tabs .nav-item .nav-link,
-  .schedule .nav-tabs .nav-link {
-    font-size: 13px;
-    padding: 10px 14px !important;
-    text-align: left;
-    width: 100%;
-  }
-
   .date-row {
     display: block;
     strong { display: block; margin-top: 4px; text-align: left; white-space: normal; }
@@ -1285,13 +1141,6 @@ $mid:            0.25s $ease;
     width: 84px;
   }
 
-  .session-block { flex-direction: column; gap: 8px; }
-  .session-time {
-    flex-direction: row;
-    gap: 6px;
-    min-width: unset;
-    padding-top: 0;
-  }
 }
 
 
