@@ -227,28 +227,28 @@
   z-index: -1;
 }
 .tis-hero .hero-kicker {
-  color: rgb(164.8796992481, 224.4977443609, 252.9203007519);
+  color: #7dd3fc;
   font-family: "Rubik", "Kanit", sans-serif;
-  font-size: clamp(10px, 0.72vw, 13px);
-  font-weight: 700;
-  letter-spacing: 2.5px;
-  margin-bottom: 16px;
+  font-size: clamp(11px, 0.82vw, 14px);
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  margin-bottom: 18px;
   text-transform: uppercase;
 }
 .tis-hero .hero-title {
   color: #ffffff;
-  font-size: clamp(2.55rem, 3.55vw, 4rem);
+  font-size: clamp(2.6rem, 3.8vw, 4.2rem);
   font-weight: 800;
-  line-height: 1.08;
-  margin-bottom: 14px;
+  line-height: 1.06;
+  margin-bottom: 16px;
   text-shadow: 0 3px 24px rgba(7, 17, 42, 0.6);
 }
 .tis-hero .hero-subtitle {
-  color: rgba(255, 255, 255, 0.62);
-  font-size: clamp(1rem, 1.15vw, 1.25rem);
-  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: clamp(0.95rem, 1.1vw, 1.15rem);
+  line-height: 1.65;
   margin-bottom: 0;
-  max-width: 620px;
+  max-width: 600px;
 }
 .tis-hero .countdown-wrapper {
   display: none;
