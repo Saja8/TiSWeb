@@ -26,42 +26,6 @@
   font-weight: 700;
 }
 
-.index-page:not(.scrolled) .header .header-container {
-  background: rgba(7, 17, 42, 0.55);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-.index-page:not(.scrolled) .header .navmenu a {
-  color: rgba(255, 255, 255, 0.82);
-}
-.index-page:not(.scrolled) .header .navmenu a:hover, .index-page:not(.scrolled) .header .navmenu a.active {
-  color: #00c8dc;
-}
-.index-page:not(.scrolled) .logo-mark {
-  color: #ffffff;
-}
-.index-page:not(.scrolled) .header .logo h1 {
-  color: #00c8dc;
-}
-.index-page:not(.scrolled) .mobile-nav-toggle {
-  color: rgba(255, 255, 255, 0.86);
-}
-.index-page.scrolled .header .header-container {
-  background: #ffffff;
-  border-bottom: 2px solid #1a3a6b;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-}
-.index-page.scrolled .header .navmenu a {
-  color: var(--nav-color);
-}
-.index-page.scrolled .logo-mark {
-  color: #1a3a6b;
-}
-.index-page.scrolled .header .logo h1 {
-  color: #0097a8;
-}
 
 .logo-mark {
   color: #1a3a6b;
@@ -69,6 +33,47 @@
   font-size: 18px;
   font-weight: 800;
   line-height: 1;
+}
+
+/* Keep desktop nav visible down to 992px (prevents menus vanishing on zoom) */
+@media (min-width: 992px) {
+  .tis-page .navmenu ul {
+    display: flex !important;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    position: static !important;
+    inset: auto !important;
+    background: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+  }
+  .tis-page .navmenu a,
+  .tis-page .navmenu a:focus {
+    color: var(--nav-color) !important;
+    padding: 12px 8px !important;
+    font-size: 13.5px !important;
+    font-family: var(--nav-font);
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    transition: 0.3s;
+  }
+  .tis-page .navmenu li:last-child a {
+    padding-right: 0 !important;
+  }
+  .tis-page .navmenu a:hover,
+  .tis-page .navmenu .active,
+  .tis-page .navmenu .active:focus {
+    color: var(--nav-hover-color) !important;
+  }
+  .tis-page .mobile-nav-toggle {
+    display: none !important;
+  }
 }
 
 @media (max-width: 1199px) {
